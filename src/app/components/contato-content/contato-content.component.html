@@ -2,12 +2,10 @@
     <div class="maxWidth">
         
         <div class="contatoContainer">
-            <h2>Entre em contato com nosso time</h2>
-            <p>Se você está interessado em nossa tarifa, solicite uma cotação. Responderemos em 24 horas. Esteja
-                ciente
-                de que também oferecemos soluções para sua melhor logística.</p>
+            <h2>{{ 'contatoContent.title' | translate }}</h2>
+            <p>{{ 'contatoContent.description' | translate }}</p>
                 
-                <a routerLink="/contato" routerLinkActive="active" class="cta">Fale Conosco</a>
+                <a routerLink="/contato" routerLinkActive="active" class="cta">{{ 'contatoContent.cta' | translate }}</a>
         </div>
     </div>
 </section>

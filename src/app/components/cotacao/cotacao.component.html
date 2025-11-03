@@ -1,6 +1,6 @@
 <section>
     <div>
-      <h2>Cotação do dia {{ myDate | date:'dd/MM/YYYY':'pt-BR' }}</h2>
+      <h2>{{ 'cotacao.title' | translate }} {{ myDate | date:dateFormat:dateLocale }}</h2>
     </div>
   
     <div *ngIf="moedas.length > 0" class="cotacaoContainer">
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div *ngIf="moedas.length === 0">
-      <p>Carregando...</p>
+      <p>{{ 'common.loading' | translate }}</p>
     </div>
   </section>
     

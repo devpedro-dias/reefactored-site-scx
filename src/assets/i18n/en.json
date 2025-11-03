@@ -1,0 +1,211 @@
+{
+  "common": {
+    "home": "Home",
+    "contact": "Contact",
+    "services": "Services",
+    "send": "Send",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error"
+  },
+  "navigation": {
+    "home": "Home",
+    "freteMaritimo": "Sea Freight",
+    "freteAereo": "Air Freight",
+    "desembaracoAduaneiro": "Customs Clearance",
+    "transporteRodoviario": "Road Transport",
+    "seguroCarga": "Cargo Insurance",
+    "contato": "Contact"
+  },
+  "cotacao": {
+    "title": "Exchange rate for"
+  },
+  "home": {
+    "title": "Logistics Services",
+    "description": "At SCX MARITIME AGENCY, through transportation experience, we provide efficient cargo transportation solutions across all continents quickly and effectively.",
+    "exploreServices": "Explore our Services",
+    "servicesDescription1": "SCX AGENCY's freight department is divided into several subdivisions and ensures that it offers quality service to customers. The Sea Freight division is involved in FCL and LCL activities, as well as Break Bulk transport.",
+    "servicesDescription2": "SCX AGENCY offers a diverse range of services, both in international movement and domestic distribution of goods, ensuring customer satisfaction with economical, reliable and timely delivery solutions.",
+    "contactCTA": {
+      "title": "Contact our team",
+      "description1": "Our experienced professionals ensure fast and efficient release of goods through our electronic customs clearance network. We are committed to providing consistent and reliable services in a timely and professional manner.",
+      "description2": "SCX AGENCY covers all major global airports, providing quality services and competitive values. We maintain partnerships with several qualified companies committed to providing safe, efficient and timely services worldwide.",
+      "description3": "If you are interested in our rates, request a quote. We will respond within 24 hours. Be aware that we also offer solutions for your best logistics.",
+      "cta": "Contact Us"
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "description": "If you are interested in our rates, request a quote. We will respond within 24 hours. Be aware that we also offer solutions for your best logistics.",
+    "form": {
+      "company": "Company",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "sendMessage": "Send Message",
+      "success": "Message sent successfully!",
+      "error": "An error occurred while sending the message. Please try again later.",
+      "configError": "Email service configuration error. Please contact support.",
+      "fillAll": "Please fill all fields.",
+      "messageMinLength": "The message must be at least 10 characters long.",
+      "messageRequired": "The message is required.",
+      "emailInvalid": "Please enter a valid email address.",
+      "emailRequired": "The email is required.",
+      "companyRequired": "Company name is required.",
+      "subjectRequired": "Subject is required.",
+      "placeholder": {
+        "company": "Enter company name",
+        "email": "example@example.com",
+        "subject": "Enter subject",
+        "message": "Enter your message"
+      }
+    }
+  },
+  "contatoContent": {
+    "title": "Contact our team",
+    "description": "If you are interested in our rates, request a quote. We will respond within 24 hours. Be aware that we also offer solutions for your best logistics.",
+    "cta": "Contact Us"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "socialMedia": "Social Media",
+    "additionalInfo": "Additional Information",
+    "copyright": "Copyright"
+  },
+  "services": {
+    "freteMaritimo": {
+      "title": "Sea Freight",
+      "description1": "With a range of experience in cargo movement with our sea freight services, SCX MARITIME AGENCY is fully equipped to handle your shipments. We offer sea freight and fully customized services with competitive rates and fast transit times for all our customers.",
+      "description2": "Our sea freight services cover FCL and LCL services. With our high level of experience in customs clearance, your formalities can be handled where necessary, including immediate, reliable and professional assistance.",
+      "servicesTitle": "We offer a complete range of sea freight import and export services, including:",
+      "lcl": {
+        "title": "LCL / (Less than Container Loads)",
+        "description": "Less than container load shipping is a cargo transportation option by sea when you don't have sufficient volume to justify the cost of an entire container. Transporting your cargo this way means sharing container space with cargo from one or more shippers."
+      },
+      "fcl": {
+        "title": "FCL / (Full Container Loads) Full container load",
+        "description": "FCL means Full Container Load (fully loaded container), which is when the importer or exporter will use the entire container. This means access to all available space within the unit. Additionally, when using FCL, a fixed rate is paid for container freight."
+      },
+      "doorToDoor": {
+        "title": "Door to door",
+        "description": "Door to Door comes from English \"Door to Door\" and is a complete operation, in which the logistics company is responsible for the process from the product collection with the organization that hired it to delivery to the final customer."
+      },
+      "projectCargo": {
+        "title": "Project cargo",
+        "description": "Project cargo are all those whose measurements, dimensions and weight are outside the standards for shipment in conventional containers. These are usually cargo such as reactors, turbines, transformers, generators, cranes, platforms, complete plants, wind blades and large equipment."
+      },
+      "roro": {
+        "title": "Ro-Ro",
+        "description": "Ro-Ro is the acronym used to define Roll on-Roll off cargo ships. It is a specific segment within the shipping universe. In a free translation, Roll on-Roll off means Roll in-Roll out. A more accurate definition would be \"rolling cargo\" ship, that is, cargo that boards and disembarks from the ship rolling, either on its own wheels (or tracks), or on specific equipment for this."
+      },
+      "breakBulk": {
+        "title": "Break Bulk",
+        "description": "Break bulk is used to describe a special type of transport for large-sized goods. This type of cargo often equates to large items or irregular shapes, such as heavy machinery, construction parts, vehicles, among others, that is, special cargo in size and weight."
+      }
+    },
+    "freteAereo": {
+      "title": "Air Freight",
+      "description1": "We offer a wide range of consolidated air freight forwarding services to most destinations around the world. Our comprehensive network of international services, combined with our world-class team of professionals, is ready to meet all your air freight needs, including cargo pickup, customs clearance, delivery and distribution operations.",
+      "description2": "Our reliable and globally scheduled consolidation services, as well as door-to-door transport, guarantee short delivery times with the security and reliability your business requires. We also offer air charter services, as needed, for emergency situations, shipments of unusual sizes and shapes, or when you need an unscheduled air freight shipment.",
+      "description3": "Combining advanced logistics and the speed provided by air transport, we offer the most modern solutions for your unique transportation challenges.",
+      "servicesTitle": "Our advanced logistics, combined with the speed that air transport provides, allows us to offer the newest solutions available for your unique transportation challenges. Our comprehensive services include:",
+      "doorToDoor": {
+        "title": "Door to door service",
+        "description": "Our door-to-door service ensures direct collection and delivery of goods to the final destination, providing convenience and efficiency. This service eliminates the need for intermediaries, reducing time and costs associated with transportation."
+      },
+      "directConsolidated": {
+        "title": "Direct and consolidated import and export transport",
+        "description": "We offer direct and consolidated transport for import and export, optimizing logistics and reducing costs. Consolidated transport allows multiple shipments to be combined into a single shipment, making the process more economical."
+      },
+      "dangerousGoods": {
+        "title": "Dangerous goods transport",
+        "description": "We specialize in the transport of dangerous goods, following strict safety standards. Our professionals are trained to handle and transport dangerous materials according to international regulations, ensuring safety throughout the process."
+      },
+      "perishableGoods": {
+        "title": "Perishable goods transport",
+        "description": "We offer specialized solutions for the transport of perishable goods, ensuring that sensitive products, such as food and flowers, arrive at their destination in perfect condition. We use temperature control technologies and monitoring to maintain product quality."
+      },
+      "pharmaceutical": {
+        "title": "Pharmaceutical products transport",
+        "description": "For the pharmaceutical industry, we provide specific transport solutions that maintain product integrity throughout the process. We use special packaging and controlled temperature conditions to ensure that medicines and biological products are delivered safely and effectively."
+      },
+      "packaging": {
+        "title": "Packaging services",
+        "description": "Our packaging services ensure that all goods are safely and properly packed for transport. We use high-quality materials and advanced packaging techniques to protect products against damage during transport, ensuring they arrive in perfect condition at the final destination."
+      }
+    },
+    "desembaracoAduaneiro": {
+      "title": "Customs Clearance",
+      "description1": "We offer a comprehensive and complete customs clearance service. Our customs broker services, local road transport and storage are integrated into our import and export operations, providing complete visibility and predictability of cargo release, from internal transit to final delivery. This integration enables efficient and transparent management, ensuring that all stages of the process are effectively fulfilled.",
+      "description2": "SCX Maritime Agency helps our customers successfully navigate complex commercial regulations, avoiding additional costs and delays. Our team of specialists is prepared to manage customs processes, from necessary documentation to inspection and release of goods. We work to ensure that all operations are in compliance with current regulations, providing peace of mind and security to our customers.",
+      "description3": "In addition, our proactive approach allows continuous compliance assessment, ensuring that services are compatible, accurate and timely. With SCX Maritime Agency, you can count on efficient customs management that minimizes risks and maximizes operational efficiency, facilitating your foreign trade operations.",
+      "supportTitle": "Customer Support",
+      "supportDescription1": "SCX MARITIME AGENCY helps our customers successfully navigate complex commercial regulations and avoid additional costs and delays. Our team is prepared to manage customs processes and assess compliance to ensure compatible, accurate and timely services.",
+      "tasksTitle": "Some of our tasks:",
+      "consulting": {
+        "title": "Foreign Trade Consulting",
+        "description": "We offer specialized consulting to help companies optimize their import and export operations, ensuring compliance and efficiency."
+      },
+      "tariffClassification": {
+        "title": "Tariff Classification - NCM (Common Nomenclature of Mercosur)",
+        "description": "We assist in the correct tariff classification of goods, ensuring the application of appropriate rates and regulations."
+      },
+      "specialRegime": {
+        "title": "Special Customs Regime",
+        "description": "We provide support in using special customs regimes, such as drawback and temporary admission, to maximize tax benefits."
+      },
+      "documentation": {
+        "title": "Preparation and Review of Required Documents",
+        "description": "We prepare and review all documentation required for customs clearance, ensuring accuracy and compliance."
+      },
+      "lpco": {
+        "title": "LPCO (Licenses, Permits, Certificates and Other Documents)",
+        "description": "We manage the obtaining of LPCOs, essential for the legality and release of goods in foreign trade."
+      },
+      "duimpDue": {
+        "title": "DUIMP (Single Import Declaration) and DU-E (Single Export Declaration) Registration",
+        "description": "We perform registration and monitoring of DUIMP and DU-E, ensuring an agile and transparent import and export process."
+      }
+    },
+    "transporteRodoviario": {
+      "title": "Road Transport",
+      "description1": "Our transport services are integrated with the entire logistics chain, with risk management operations, ensuring greater security and traceability of goods.",
+      "description2": "We serve the entire national territory, with our own structure and partners. This activity consists of collecting, transporting and distributing goods between central hubs, within ideal deadlines to meet customer needs.",
+      "description3": "For greater comfort, we make exclusive door-to-door transports and deliveries. We serve with appropriate vehicles composed of carefully selected vehicles, guaranteeing greater quality of service provided. For greater customer security, the company uses a satellite tracking system with constant monitoring, maintaining appropriate insurance policies for all transported cargo.",
+      "supportTitle": "Customer Support",
+      "supportDescription": "Specialized storage service can be performed at our distribution centers or at your facilities, with diverse activities that include:",
+      "receiving": {
+        "title": "Receiving",
+        "description": "Our receiving service ensures that all goods are carefully inspected and registered upon arrival at our distribution center. This initial process is crucial to ensure the integrity and accuracy of product information, enabling efficient control from the first moment."
+      },
+      "storage": {
+        "title": "Storage",
+        "description": "We offer storage solutions in modern and secure facilities, designed to accommodate a wide range of products. Our storage spaces are strategically organized to optimize space use and ensure easy access to items, maintaining quality and security of goods."
+      },
+      "handling": {
+        "title": "Handling",
+        "description": "Internal movement of goods is carried out efficiently and safely, using modern equipment and advanced techniques. This service is essential to ensure that products are always in the right place, at the right time, facilitating continuous flow within the warehouse."
+      },
+      "pickingPacking": {
+        "title": "Picking & Packing",
+        "description": "Our picking & packing service ensures that orders are separated and packed according to customer specifications. We use standardized processes to ensure accuracy and speed, ensuring products are ready for shipment in perfect condition."
+      },
+      "shipping": {
+        "title": "Shipping",
+        "description": "Shipping is conducted with agility and precision, ensuring that goods are delivered to the final destination within the established deadline. We use advanced tracking systems to monitor delivery progress, offering customers peace of mind knowing where their goods are in real time."
+      },
+      "vmi": {
+        "title": "Inventory Management (VMI)",
+        "description": "Our inventory management (VMI) service offers a proactive approach to monitoring and replenishing products. We work closely with our customers to forecast demand and maintain ideal inventory levels, avoiding shortages and ensuring operational continuity."
+      },
+      "vmiDescription": "Sequencial Transportes' inventory management system is complete and fully automated. Designed for customers who aggregate multiple suppliers, assemblers and distributors in their chain. This system provides complete visibility of advanced inventories to involved parties (suppliers, operators and manufacturers)."
+    },
+    "seguroCarga": {
+      "title": "Cargo Insurance",
+      "description1": "Cargo insurance has as its main objective to provide peace of mind during the transport of goods. It is intended for the owner (shipper) of goods transported in their vehicles or delivered to third parties (self-employed or carriers), whether by sea, air, land or waterway. This insurance covers losses or damages suffered by goods during transport, guaranteeing the security of assets.",
+      "description2": "This insurance is especially important for importers and exporters of goods between Brazil and abroad. Regardless of the means of transport used – maritime, air, land or waterway - the insurance offers coverage adapted to the sales conditions established between the importer and exporter. Coverage may include costs such as FOB (Free on Board), freight, various expenses, expected profits and taxes (II, IPI and ICMS).",
+      "description3": "Taking out cargo insurance is an essential measure to minimize risks and ensure that any losses or damages are financially compensated. By guaranteeing the protection of goods, insurance contributes to stability and confidence in foreign trade operations."
+    }
+  }
+}

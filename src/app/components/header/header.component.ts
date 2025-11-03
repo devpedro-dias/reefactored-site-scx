@@ -1,6 +1,8 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,9 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
   imports: [
     NgOptimizedImage,
     RouterModule, CommonModule,
-    RouterLink, RouterLinkActive
+    RouterLink, RouterLinkActive,
+    TranslateModule,
+    LanguageSwitcherComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -17,27 +21,31 @@ export class HeaderComponent {
   routes = [
     {
       path: 'home',
-      label: 'Home',
+      labelKey: 'navigation.home',
     },
     {
       path: 'frete-maritimo',
-      label: 'Frete Marítimo',
+      labelKey: 'navigation.freteMaritimo',
     },
     {
       path: 'frete-aereo',
-      label: 'Frete Aéreo',
+      labelKey: 'navigation.freteAereo',
     },
     {
       path: 'desembaraco-aduaneiro',
-      label: 'Desembaraço Aduaneiro',
+      labelKey: 'navigation.desembaracoAduaneiro',
     },
     {
       path: 'transporte-rodoviario',
-      label: 'Transporte Rodoviário'
+      labelKey: 'navigation.transporteRodoviario'
+    },
+    {
+      path: 'seguro-carga',
+      labelKey: 'navigation.seguroCarga'
     },
     {
       path: 'contato',
-      label: 'Contato'
+      labelKey: 'navigation.contato'
     }
   ]
 }

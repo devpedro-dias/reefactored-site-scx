@@ -1,0 +1,113 @@
+@use "../../variables.scss" as *;
+
+.language-switcher {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  flex-direction: row;
+
+    .lang-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: .7em 1em;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.14em;
+    color: $main-color;
+    font-weight: 500;
+    min-width: auto;
+    min-height: auto;
+    text-decoration: none;
+    position: relative;
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin: 0;
+    line-height: 1;
+
+    &:hover {
+      color: $accent-color;
+      background-color: transparent;
+    }
+
+    &.active {
+      color: $accent-color;
+      font-weight: 500;
+    }
+
+    .flag {
+      font-size: 1em;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    .lang-name {
+      font-weight: 500;
+      white-space: nowrap;
+      display: inline-block;
+    }
+  }
+}
+
+// Estilos para mobile (sidebar)
+@media screen and (max-width: 1199px) {
+  .language-switcher {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 0.5rem;
+
+    .lang-btn {
+      padding: 0.5em 0.75em;
+      font-size: 1em;
+      min-width: 50px;
+      min-height: 50px;
+      border: 1px solid $main-color;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: $main-color;
+        color: white;
+      }
+
+      &.active {
+        background-color: $main-color;
+        color: white;
+        
+        &::after {
+          display: none;
+        }
+      }
+
+      .lang-name {
+        display: inline;
+        font-size: 0.9em;
+      }
+
+      .flag {
+        font-size: 0.9em;
+      }
+    }
+  }
+}
+
+// Estilos para desktop
+@media screen and (min-width: 1200px) {
+  .language-switcher {
+    gap: 0;
+
+    .lang-btn {
+      padding: 0.7em 1em;
+      
+      .lang-name {
+        display: inline;
+      }
+    }
+  }
+}
+

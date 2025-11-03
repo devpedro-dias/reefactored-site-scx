@@ -1,62 +1,186 @@
 <header>
-    <div class="top-header">
-            <button routerLink="" class="top-header-cta">
-                <div class="top-header-logo">
-                    <img ngSrc="../../assets/website-images/logo-redimensionada.png" width="140" height="140" priority>  
-                </div>  
-            </button>
-            <button routerLink="" class="top-header-cta">
-                    <div class="flexTopHeader">
-                        <h1 class="top-header-logo_name"><span class="uppercase">SCX 
-    
-                            <span class="uppercase">Agenciamentos Marítimos</span>
-                            </span>
-                        
-                        </h1>
-                    </div> 
-            </button>        
+  <div class="top-header">
+    <button routerLink="" class="top-header-cta">
+      <div class="top-header-logo">
+        <img
+          ngSrc="../../assets/website-images/logo-redimensionada.png"
+          width="140"
+          height="140"
+          priority
+        />
+      </div>
+    </button>
+    <button routerLink="" class="top-header-cta">
+      <div class="flexTopHeader">
+        <h1 class="top-header-logo_name">
+          <span class="uppercase"
+            >SCX
 
-        <input type="checkbox" id="sidebar-active">
-                <label for="sidebar-active" class="open-sidebar-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
-                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-                    </svg>
-                </label>
-                <label id="overlay" for="sidebar-active"></label>
-                <div class="links-container">
-                    <label for="sidebar-active" class="close-sidebar-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="32">
-                            <path d=" m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56
-                            56-224-224-224 224Z" />
-                        </svg>
-                    </label>
-                    
-                    <div class="flexLinkContainer">
-                        <div>
-                            <nav role="navigation" class="primary-navigation">
-                                <ul id="navbar">
-                                    <li class="li-inherit"><a routerLink="/home" routerLinkActive="active" class="btn btn-inherit" >Home</a></li>
-                                    <li class="li-inherit"><a routerLink="/frete-maritimo" routerLinkActive="active" class="btn btn-inherit" >Frete Marítimo</a></li>
-                                    <li class="li-inherit"><a routerLink="/frete-aereo" routerLinkActive="active" class="btn btn-inherit" >Frete Aéreo</a></li>
-                                    <li class="li-inherit"><a routerLink="/desembaraco-aduaneiro" routerLinkActive="active" class="btn btn-inherit" >Desembaraço Aduaneiro</a></li>
-                                    <li class="li-inherit"><a routerLink="/transporte-rodoviario" routerLinkActive="active" class="btn btn-inherit" >Transporte Rodoviário</a></li>
-                                    <li class="li-inherit"><a routerLink="/seguro-carga" routerLinkActive="active" class="btn btn-inherit">Seguro de Carga</a></li>
-                                    <li><a routerLink="/contato" routerLinkActive="active" class="btn" >Contato</a></li>
-                                </ul>
-                                <ul class="services">
-                                    <li><a routerLink="/home" routerLinkActive="active" class="btn" >Home</a></li>
-                                    <li><a class="btn">Serviços &dtrif;</a>
-                                      <ul class="dropdown">
-                                        <li><a routerLink="/frete-maritimo" routerLinkActive="active" class="btn" >Frete Marítimo</a></li>
-                                        <li><a routerLink="/frete-aereo" routerLinkActive="active" class="btn" >Frete Aéreo</a></li>
-                                        <li><a routerLink="/desembaraco-aduaneiro" routerLinkActive="active" class="btn" >Desembaraço Aduaneiro</a></li>
-                                        <li><a routerLink="/transporte-rodoviario" routerLinkActive="active" class="btn" >Transporte Rodoviário</a></li>
-                                        <li><a routerLink="/seguro-carga" routerLinkActive="active" class="btn" >Seguro de Carga</a></li>
-                                      </ul> 
-                                    </li>
-                                    <li><a routerLink="/contato" routerLinkActive="active" class="btn" >Contato</a></li>
-                                  </ul>
-                            </nav>
-                        </div>
-                    </div>                    
-                </div>
+            <span class="uppercase">Agenciamentos Marítimos</span>
+          </span>
+        </h1>
+      </div>
+    </button>
+
+    <input type="checkbox" id="sidebar-active" />
+    <label for="sidebar-active" class="open-sidebar-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="32"
+        viewBox="0 -960 960 960"
+        width="32"
+      >
+        <path
+          d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+        />
+      </svg>
+    </label>
+    <label id="overlay" for="sidebar-active"></label>
+    <div class="links-container">
+      <label for="sidebar-active" class="close-sidebar-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="32"
+          viewBox="0 -960 960 960"
+          width="32"
+        >
+          <path
+            d=" m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56
+                            56-224-224-224 224Z"
+          />
+        </svg>
+      </label>
+
+      <div class="flexLinkContainer">
+        <div>
+          <nav role="navigation" class="primary-navigation">
+            <ul id="navbar">
+              <li class="li-inherit">
+                <a
+                  routerLink="/home"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.home" | translate }}</a
+                >
+              </li>
+              <li class="li-inherit">
+                <a
+                  routerLink="/frete-maritimo"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.freteMaritimo" | translate }}</a
+                >
+              </li>
+              <li class="li-inherit">
+                <a
+                  routerLink="/frete-aereo"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.freteAereo" | translate }}</a
+                >
+              </li>
+              <li class="li-inherit">
+                <a
+                  routerLink="/desembaraco-aduaneiro"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.desembaracoAduaneiro" | translate }}</a
+                >
+              </li>
+              <li class="li-inherit">
+                <a
+                  routerLink="/transporte-rodoviario"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.transporteRodoviario" | translate }}</a
+                >
+              </li>
+              <li class="li-inherit">
+                <a
+                  routerLink="/seguro-carga"
+                  routerLinkActive="active"
+                  class="btn btn-inherit"
+                  >{{ "navigation.seguroCarga" | translate }}</a
+                >
+              </li>
+              <li>
+                <a
+                  routerLink="/contato"
+                  routerLinkActive="active"
+                  class="btn"
+                  >{{ "navigation.contato" | translate }}</a
+                >
+              </li>
+              <li class="language-nav-item">
+                <app-language-switcher></app-language-switcher>
+              </li>
+            </ul>
+            <ul class="services">
+              <li>
+                <a routerLink="/home" routerLinkActive="active" class="btn">{{
+                  "navigation.home" | translate
+                }}</a>
+              </li>
+              <li>
+                <a class="btn">{{ "common.services" | translate }} &dtrif;</a>
+                <ul class="dropdown">
+                  <li>
+                    <a
+                      routerLink="/frete-maritimo"
+                      routerLinkActive="active"
+                      class="btn"
+                      >{{ "navigation.freteMaritimo" | translate }}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/frete-aereo"
+                      routerLinkActive="active"
+                      class="btn"
+                      >{{ "navigation.freteAereo" | translate }}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/desembaraco-aduaneiro"
+                      routerLinkActive="active"
+                      class="btn"
+                      >{{ "navigation.desembaracoAduaneiro" | translate }}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/transporte-rodoviario"
+                      routerLinkActive="active"
+                      class="btn"
+                      >{{ "navigation.transporteRodoviario" | translate }}</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      routerLink="/seguro-carga"
+                      routerLinkActive="active"
+                      class="btn"
+                      >{{ "navigation.seguroCarga" | translate }}</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  routerLink="/contato"
+                  routerLinkActive="active"
+                  class="btn"
+                  >{{ "navigation.contato" | translate }}</a
+                >
+              </li>
+              <li class="language-nav-item">
+                <app-language-switcher></app-language-switcher>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

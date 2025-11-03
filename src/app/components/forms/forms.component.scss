@@ -1,104 +1,267 @@
-@import "../../variables.scss";
+@use "../../variables.scss" as *;
+
+.formContainer {
+  width: 30vw;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 80vw;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 50vw;
+  }
+}
 
 form {
-    width: 50%;
-    margin: auto;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3em;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+
+  label {
+    color: $main-color;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: block;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  input,
+  textarea {
+    padding: 1em 1.2em;
+    color: #333;
+    font-size: 1em;
+    border: 2px solid #e0e0e0;
+    outline: 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    background: white;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #999;
+      opacity: 0.7;
+    }
+
+    &:hover {
+      border-color: $main-color;
+    }
+  }
+
+  textarea {
+    height: 10em;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: $main-color;
+    box-shadow: 0 0 0 3px rgba($main-color, 0.1);
+    padding-left: 1.2em;
+  }
+
+  .flexContainer {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+
+    button {
+      margin: 0;
+      background: linear-gradient(135deg, $main-color 0%, $accent-color 100%);
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 1.2em 3em;
+      font-size: 1.1em;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba($main-color, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      min-width: 200px;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba($main-color, 0.4);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.popup-overlay {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  z-index: 10000;
+  animation: slideUp 0.4s ease-out;
+
+  &.hiding {
+    animation: slideDown 0.4s ease-out forwards;
+  }
+
+  .popup-content {
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1em 1.5em;
+    max-width: 350px;
+    animation: slideUp 0.4s ease-out;
+
+    .successMessage {
+      color: #10b981;
+      margin: 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 0.95em;
+
+      &::before {
+        content: "✓";
+        display: inline-block;
+        background: #10b981;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        font-size: 0.85em;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+    }
+
+    .errorMessage {
+      color: #ef4444;
+      margin: 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 0.95em;
+
+      &::before {
+        content: "✕";
+        display: inline-block;
+        background: #ef4444;
+        color: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        text-align: center;
+        line-height: 22px;
+        font-size: 0.85em;
+        font-weight: bold;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 0;
+  }
+
+  form {
+    padding: 1.5em;
+    border-radius: 15px;
 
     label {
-        color: white;
-        margin-top: 1em;
-        margin-bottom: .4em;
-        font-size: 1.4em;
+      font-size: 1em;
+      margin-top: 1.2em;
     }
 
-    input, textarea {
-        padding: .6em 0.4em;
-        color: $main-color;
-        font-size: 1em;
-        border: 0;
-        outline: 0;
-        transition: all .25s ease-in-out;
-        border-radius: 6px;
-    }
-    
+    input,
     textarea {
-        height: 8em;
-    }
-
-    input:focus, textarea:focus {
-        padding-left: 2em;
+      padding: 0.9em 1em;
+      font-size: 0.95em;
     }
 
     .flexContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        button {
-            margin: 3em;
-            background: $main-color;
-            border: none;
-            cursor: pointer;
-            color: white;
-            padding: 1em 1.4em;
-            font-size: 1em;
-            border-radius: 10px;
-        }
+      button {
+        padding: 1em 2em;
+        font-size: 1em;
+        width: 100%;
+      }
     }
+  }
 
+  .popup-overlay {
+    bottom: 1em;
+    right: 1em;
+    left: 1em;
+
+    .popup-content {
+      padding: 1em 1.2em;
+      max-width: 100%;
+
+      .successMessage,
+      .errorMessage {
+        font-size: 0.9em;
+        gap: 0.4em;
+
+        &::before {
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
 }
 
-.container-message {
-    position: relative;
-
-    .container-message-background {
-        position: absolute  ;
-        background-color: white;
-        border-radius: 20px;
-        box-shadow: 2px 2px 3px rgba($color: #000000, $alpha: .2);
-        transform: translateX(-50%);
-        left: 50%;
-        width:max-content;
-        top: -40px;
-    
-        .successMessage {
-            color: black;
-            margin: .2em 1em;
-          }
-          
-          .errorMessage {
-            color: black;
-            margin: .2em 1em;
-          }
-    
-    }
-}
-
-  
-
-@media(max-width: 700px) {
-    .formContainer {
-
-        .form {
-            width: 80%;
-        }
-
-    }
-    .container-message {
-        .container-message-background {
-            left: 50%
-        }
-    }
-}
-
-@media(max-width: 1300px) {
-    .formContainer {
-
-        .form {
-            width: 70%;
-        }
-
-    }
+@media (min-width: 769px) and (max-width: 1024px) {
+  form {
+    padding: 2.5em;
+  }
 }

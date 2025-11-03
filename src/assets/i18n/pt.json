@@ -1,0 +1,211 @@
+{
+  "common": {
+    "home": "Home",
+    "contact": "Contato",
+    "services": "Serviços",
+    "send": "Enviar",
+    "loading": "Carregando...",
+    "success": "Sucesso",
+    "error": "Erro"
+  },
+  "navigation": {
+    "home": "Home",
+    "freteMaritimo": "Frete Marítimo",
+    "freteAereo": "Frete Aéreo",
+    "desembaracoAduaneiro": "Desembaraço Aduaneiro",
+    "transporteRodoviario": "Transporte Rodoviário",
+    "seguroCarga": "Seguro de Carga",
+    "contato": "Contato"
+  },
+  "cotacao": {
+    "title": "Cotação do dia"
+  },
+  "home": {
+    "title": "Serviços Logísticos",
+    "description": "Na SCX AGENCIAMENTOS MARÍTIMOS, por meio de experiência em transporte, fornecemos soluções eficientes de transportes de cargas em todos os continentes de forma rápida e eficaz.",
+    "exploreServices": "Explore nossos Serviços",
+    "servicesDescription1": "O departamento de frete da SCX AGENCIAMENTOS é dividido em várias subdivisões e garante que ele ofereça um serviço de qualidade aos clientes. A divisão de Frete Marítimo está envolvida nas atividades FCL e LCL, além do transporte Break Bulk.",
+    "servicesDescription2": "A SCX AGENCIAMENTOS oferece uma gama diversificada de serviços, tanto no movimento internacional quanto na distribuição doméstica de mercadorias, garantindo a satisfação de nossos clientes, com soluções econômicas, confiáveis e pontuais de entrega.",
+    "contactCTA": {
+      "title": "Entre em contato com nosso time",
+      "description1": "Nossos profissionais experientes garantem a liberação das mercadorias de forma rápida e eficiente por meio de nossa rede de desembaraço aduaneiro eletrônico. Temos o compromisso de fornecer serviços consistentes e confiáveis de maneira oportuna e profissional.",
+      "description2": "A SCX AGENCIAMENTOS cobre todos os principais aeroportos globais, fornecendo serviços de qualidade e valores competitivos. Mantemos parcerias com várias companhias qualificadas e comprometidas em fornecer serviços seguros, eficientes e pontuais em todo mundo.",
+      "description3": "Se você está interessado em nossa tarifa, solicite uma cotação. Responderemos em 24 horas. Esteja ciente de que também oferecemos soluções para sua melhor logística.",
+      "cta": "Fale Conosco"
+    }
+  },
+  "contact": {
+    "title": "Entre em contato",
+    "description": "Se você está interessado em nossa tarifa, solicite uma cotação. Responderemos em 24 horas. Esteja ciente de que também oferecemos soluções para sua melhor logística.",
+    "form": {
+      "company": "Empresa",
+      "email": "E-mail",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "sendMessage": "Enviar Mensagem",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente mais tarde.",
+      "configError": "Erro de configuração do serviço de e-mail. Por favor, entre em contato com o suporte.",
+      "fillAll": "Preencha todos os campos.",
+      "messageMinLength": "A mensagem deve ter pelo menos 10 caracteres.",
+      "messageRequired": "A mensagem é obrigatória.",
+      "emailInvalid": "Por favor, insira um e-mail válido.",
+      "emailRequired": "O e-mail é obrigatório.",
+      "companyRequired": "O nome da empresa é obrigatório.",
+      "subjectRequired": "O assunto é obrigatório.",
+      "placeholder": {
+        "company": "Digite o nome da empresa",
+        "email": "example@example.com",
+        "subject": "Digite o assunto",
+        "message": "Digite sua mensagem"
+      }
+    }
+  },
+  "contatoContent": {
+    "title": "Entre em contato com nosso time",
+    "description": "Se você está interessado em nossa tarifa, solicite uma cotação. Responderemos em 24 horas. Esteja ciente de que também oferecemos soluções para sua melhor logística.",
+    "cta": "Fale Conosco"
+  },
+  "footer": {
+    "navigation": "Navegação",
+    "contact": "Contato",
+    "socialMedia": "Redes Sociais",
+    "additionalInfo": "Informações Adicionais",
+    "copyright": "Copyright"
+  },
+  "services": {
+    "freteMaritimo": {
+      "title": "Frete Marítimo",
+      "description1": "Com uma gama de experiência na movimentação de mercadorias com nossos serviços de frete marítimo, a SCX AGENCIAMENTOS MARÍTIMOS está totalmente equipada para lidar com suas remessas. Oferecemos frete marítimo e serviços totalmente personalizados com tarifas competitivas e tempos de trânsito rápidos para todos os nossos clientes.",
+      "description2": "Nossos serviços de frete marítimo cobre os serviços FCL e LCL. Com nosso alto nível de experiência em desembaraço aduaneiro, suas formalidades podem ser atendidas onde necessário, incluindo assistência imediata, confiável e profissional.",
+      "servicesTitle": "Oferecemos uma gama completa de serviços de frete marítimo de importação e exportação, incluindo:",
+      "lcl": {
+        "title": "LCL / (Less than Container Loads) Carga menos do que de contêineres",
+        "description": "O envio less than container load é uma opção de transporte de carga pelo mar quando você não possui volumes suficientes para justificar o custo de um contêiner inteiro. Transportar sua carga desta forma significa compartilhar o espaço do contêiner com a carga de um ou mais remetentes."
+      },
+      "fcl": {
+        "title": "FCL / (Full Container Loads) Carga completa no container",
+        "description": "FCL significa Full Container Load (contêiner totalmente carregado), ou seja, é quando o importador ou exportador utilizará totalmente o container. Isso significa acesso a todo o espaço disponível dentro da unidade. Além disso, ao utilizar o FCL, será pago um valor fixo pelo frete do contêiner."
+      },
+      "doorToDoor": {
+        "title": "Porta a porta",
+        "description": "Door to Door vem do inglês \"Porta a Porta\" e se trata de uma operação completa, na qual a empresa de logística é responsável pelo processo desde a coleta do produto com a organização que a contratou até a entrega para o cliente final."
+      },
+      "projectCargo": {
+        "title": "Carga de projeto",
+        "description": "Carga de projeto são todas aquelas cujas medidas, dimensões e peso são fora dos padrões para o embarque em contêineres convencionais. Normalmente são cargas como reatores, turbinas, transformadores, geradores, guindastes, plataformas, usinas completas, pás eólicas e equipamentos de grande porte."
+      },
+      "roro": {
+        "title": "Ro-Ro",
+        "description": "Ro-Ro é a sigla utilizada para definir os navios cargueiros Roll on-Roll off. É um segmento específico dentro do universo da navegação. Numa tradução livre, Roll on-Roll off significa Rolar para dentro-Rolar para fora. Uma definição mais acurada seria navio de \"carga rolante\", ou seja, aquela que embarca e desembarca do navio rolando, seja em cima de suas próprias rodas (ou lagartas), seja em cima de um equipamento específico para isso."
+      },
+      "breakBulk": {
+        "title": "Break Bulk",
+        "description": "Break bulk é usado para descrever um tipo de transporte especial para mercadorias de grandes dimensões. Este tipo de carga muitas vezes equivale a itens de grande porte ou de formato irregular, como maquinários pesados, peças de construção, veículos, entre outros, ou seja, cargas especiais em tamanho e peso."
+      }
+    },
+    "freteAereo": {
+      "title": "Frete Aéreo",
+      "description1": "Oferecemos uma ampla gama de serviços consolidados de encaminhamento de frete aéreo para a maioria dos destinos ao redor do mundo. Nossa rede abrangente de serviços internacionais, aliada à nossa equipe de profissionais de classe mundial, está preparada para atender todas as suas necessidades de frete aéreo, incluindo operações de retirada de mercadoria, desembaraço aduaneiro, entrega e distribuição.",
+      "description2": "Nossos serviços de consolidação confiáveis e programados globalmente, bem como o transporte porta a porta, garantem tempos de entrega curtos com a segurança e a confiabilidade que seu negócio exige. Também oferecemos serviços de fretamento aéreo, conforme necessário, para situações de emergência, remessas de tamanhos e formas incomuns ou para quando você precisar de uma remessa não programada de frete aéreo.",
+      "description3": "Combinando logística avançada e a rapidez proporcionada pelo transporte aéreo, oferecemos as soluções mais modernas para seus desafios exclusivos de transporte.",
+      "servicesTitle": "Nossa logística avançada, combinada com a velocidade que o transporte aéreo proporciona, permite oferecer as mais novas soluções disponíveis para seus desafios exclusivos de transporte. Nossos serviços abrangentes incluem:",
+      "doorToDoor": {
+        "title": "Serviço de porta a porta",
+        "description": "Nosso serviço de porta a porta garante a coleta e entrega direta das mercadorias no destino final, proporcionando conveniência e eficiência. Este serviço elimina a necessidade de intermediários, reduzindo o tempo e os custos associados ao transporte."
+      },
+      "directConsolidated": {
+        "title": "Transporte direto e consolidado de importação e exportação",
+        "description": "Oferecemos transporte direto e consolidado para importação e exportação, otimizando a logística e reduzindo custos. O transporte consolidado permite que várias remessas sejam combinadas em um único envio, tornando o processo mais econômico."
+      },
+      "dangerousGoods": {
+        "title": "Transporte de mercadorias perigosas",
+        "description": "Especializamo-nos no transporte de mercadorias perigosas, seguindo rigorosos padrões de segurança. Nossos profissionais são treinados para manusear e transportar materiais perigosos de acordo com as regulamentações internacionais, garantindo a segurança durante todo o processo."
+      },
+      "perishableGoods": {
+        "title": "Transporte de mercadorias perecíveis",
+        "description": "Oferecemos soluções especializadas para o transporte de mercadorias perecíveis, assegurando que produtos sensíveis, como alimentos e flores, cheguem ao destino em perfeitas condições. Utilizamos tecnologias de controle de temperatura e monitoramento para manter a qualidade dos produtos."
+      },
+      "pharmaceutical": {
+        "title": "Transporte de produtos farmacêuticos",
+        "description": "Para a indústria farmacêutica, disponibilizamos soluções de transporte específicas que mantêm a integridade dos produtos durante todo o processo. Utilizamos embalagens especiais e condições controladas de temperatura para garantir que medicamentos e produtos biológicos sejam entregues de forma segura e eficaz."
+      },
+      "packaging": {
+        "title": "Serviços de embalagem",
+        "description": "Nossos serviços de embalagem garantem que todas as mercadorias sejam acondicionadas de forma segura e adequada para o transporte. Utilizamos materiais de alta qualidade e técnicas avançadas de embalagem para proteger os produtos contra danos durante o transporte, assegurando que cheguem em perfeitas condições ao destino final."
+      }
+    },
+    "desembaracoAduaneiro": {
+      "title": "Desembaraço Aduaneiro",
+      "description1": "Oferecemos um amplo e completo serviço de desembaraço aduaneiro. Nossos serviços de despachante aduaneiro, transporte rodoviário local e armazenamento são integrados às nossas operações de importação e exportação, proporcionando visibilidade e previsão completas da liberação das cargas, desde o trânsito interno até a entrega final. Essa integração permite uma gestão eficiente e transparente, garantindo que todas as etapas do processo sejam cumpridas de forma eficaz.",
+      "description2": "A SCX Agenciamentos Marítimos ajuda nossos clientes a navegar com sucesso pelos regulamentos comerciais complexos, evitando custos e atrasos adicionais. Nossa equipe de especialistas está preparada para gerenciar os processos aduaneiros, desde a documentação necessária até a inspeção e liberação das mercadorias. Trabalhamos para assegurar que todas as operações estejam em conformidade com as normas vigentes, proporcionando tranquilidade e segurança aos nossos clientes.",
+      "description3": "Além disso, nossa abordagem proativa permite a avaliação contínua das conformidades, garantindo que os serviços sejam compatíveis, precisos e oportunos. Com a SCX Agenciamentos Marítimos, você pode contar com uma gestão aduaneira eficiente, que minimiza riscos e maximiza a eficiência operacional, facilitando suas operações de comércio exterior.",
+      "supportTitle": "Suporte ao Cliente",
+      "supportDescription1": "A SCX AGENCIAMENTOS MARÍTIMOS ajuda nossos clientes a navegar com sucesso pelos regulamentos comerciais complexos e a evitar custos e atrasos adicionais. Nossa equipe está preparada para gerenciar os processos audaneiros e avaliar a confirmidade para garantir os serviços compatíveis precisos e oportunos.",
+      "tasksTitle": "Algumas de nossas tarefas:",
+      "consulting": {
+        "title": "Consultoria em Comércio Exterior",
+        "description": "Oferecemos consultoria especializada para ajudar empresas a otimizar suas operações de importação e exportação, garantindo conformidade e eficiência."
+      },
+      "tariffClassification": {
+        "title": "Classificação Tarifária - NCM (Nomenclatura Comum do Mercosul)",
+        "description": "Auxiliamos na correta classificação tarifária de mercadorias, assegurando a aplicação das taxas e regulamentações adequadas."
+      },
+      "specialRegime": {
+        "title": "Regime Aduaneiro Especial",
+        "description": "Fornecemos suporte na utilização de regimes aduaneiros especiais, como drawback e admissão temporária, para maximizar benefícios fiscais."
+      },
+      "documentation": {
+        "title": "Elaboração e Conferência de Documentos Necessários",
+        "description": "Preparamos e revisamos toda a documentação exigida para o desembaraço aduaneiro, garantindo precisão e conformidade."
+      },
+      "lpco": {
+        "title": "LPCO (Licenças, Permissões, Certificados e Outros Documentos)",
+        "description": "Gerenciamos a obtenção de LPCOs, essenciais para a legalidade e liberação de mercadorias no comércio exterior."
+      },
+      "duimpDue": {
+        "title": "Registros DUIMP (Declaração Única de Importação) e DU-E (Declaração Única de Exportação)",
+        "description": "Realizamos o registro e acompanhamento de DUIMP e DU-E, assegurando um processo de importação e exportação ágil e transparente."
+      }
+    },
+    "transporteRodoviario": {
+      "title": "Transporte Rodoviário",
+      "description1": "Nossos serviços de transporte estão integrados com toda cadeia logística, com atuação na gestão de risco, garantindo maior segurança e rastreabilidade das mercadorias.",
+      "description2": "Atendemos todo território nacional, contando com estrutura própria e parceiros. Esta atividade consiste em coletar, transportar e distribuir as mercadorias entre os polos centrais, em prazos ideais para atender as necessidades do cliente.",
+      "description3": "Para maior conforto, fazemos transportes e entregas exclusivos porta a porta. Atendemos com veículos apropriados compostos por veículos criteriosamente selecionados, garantindo maior qualidade do serviço prestado. Para maior segurança dos clientes, a empresa utiliza sistema de rastreamento via satélite com monitoramento constante, mantendo apólice de seguro apropriado para todas as cargas transportadas.",
+      "supportTitle": "Suporte ao Cliente",
+      "supportDescription": "O serviço de armazenagem especializada pode ser realizado em nossos centros de distribuição ou em suas instalações, com atividades diversificadas que englobam:",
+      "receiving": {
+        "title": "Recebimento",
+        "description": "Nosso serviço de recebimento garante que todas as mercadorias sejam cuidadosamente inspecionadas e registradas ao chegar ao nosso centro de distribuição. Este processo inicial é crucial para assegurar a integridade e a precisão das informações sobre os produtos, permitindo um controle eficiente desde o primeiro momento."
+      },
+      "storage": {
+        "title": "Armazenagem",
+        "description": "Oferecemos soluções de armazenagem em instalações modernas e seguras, projetadas para acomodar uma vasta gama de produtos. Nossos espaços de armazenagem são organizados de maneira estratégica para otimizar o uso do espaço e garantir fácil acesso aos itens, mantendo a qualidade e a segurança das mercadorias."
+      },
+      "handling": {
+        "title": "Movimentação",
+        "description": "A movimentação interna das mercadorias é realizada de forma eficiente e segura, utilizando equipamentos modernos e técnicas avançadas. Este serviço é essencial para garantir que os produtos estejam sempre no local certo, na hora certa, facilitando o fluxo contínuo dentro do armazém."
+      },
+      "pickingPacking": {
+        "title": "Picking & Packing",
+        "description": "Nosso serviço de picking & packing assegura que os pedidos sejam separados e embalados de acordo com as especificações do cliente. Utilizamos processos padronizados para garantir precisão e rapidez, garantindo que os produtos estejam prontos para expedição em perfeitas condições."
+      },
+      "shipping": {
+        "title": "Expedição",
+        "description": "A expedição é conduzida com agilidade e precisão, assegurando que as mercadorias sejam entregues no destino final dentro do prazo estabelecido. Utilizamos sistemas de rastreamento avançados para monitorar o progresso das entregas, oferecendo aos clientes a tranquilidade de saber onde suas mercadorias estão em tempo real."
+      },
+      "vmi": {
+        "title": "Gestão de estoques (VMI)",
+        "description": "Nosso serviço de gestão de estoques (VMI) oferece uma abordagem proativa para o monitoramento e reabastecimento de produtos. Trabalhamos em estreita colaboração com nossos clientes para prever a demanda e manter os níveis de estoque ideais, evitando rupturas e garantindo a continuidade das operações."
+      },
+      "vmiDescription": "O sistema de gestão de estoques da Sequencial Transportes é completo e totalmente automatizado. Voltado para clientes que agregam em sua cadeia múltiplos fornecedores, montadores e distribuidores. Este sistema permite total visibilidade de estoques avançados às partes envolvidas (fornecedores, operadores e fabricantes)."
+    },
+    "seguroCarga": {
+      "title": "Seguro de Carga",
+      "description1": "O seguro de carga tem como principal objetivo proporcionar tranquilidade durante o transporte de mercadorias. Ele é destinado ao proprietário (embarcador) das mercadorias transportadas em seus veículos ou entregues a terceiros (autônomos ou transportadoras), seja por via marítima, aérea, terrestre ou aquaviária. Este seguro cobre perdas ou danos sofridos pelas mercadorias durante o transporte, garantindo a segurança dos bens.",
+      "description2": "Esse seguro é especialmente importante para importadores e exportadores de mercadorias entre o Brasil e o exterior. Independentemente do meio de transporte utilizado – marítimo, aéreo, terrestre ou aquaviário - o seguro oferece cobertura adaptada às condições de venda estabelecidas entre o importador e o exportador. As coberturas podem incluir custos como FOB (Free on Board), frete, despesas diversas, lucros esperados e impostos (II, IPI e ICMS).",
+      "description3": "A contratação de um seguro de carga é uma medida essencial para minimizar riscos e assegurar que eventuais perdas ou danos sejam compensados financeiramente. Ao garantir a proteção das mercadorias, o seguro contribui para a estabilidade e confiança nas operações de comércio exterior."
+    }
+  }
+}

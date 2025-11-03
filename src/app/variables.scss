@@ -3,3 +3,22 @@ $accent-color: #225c6a;
 $text-color: #f0f0f0;
 $gradient: linear-gradient(transparent 50%, $main-color 50%);
 $default-gap: 1rem;
+
+// Breakpoints for responsive design
+$breakpoints: (
+  mobile: 480px,
+  tablet: 768px,
+  desktop: 1024px,
+  large: 1280px,
+  xlarge: 1536px
+);
+
+// Mixin for responsive media queries
+@use "sass:map";
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}

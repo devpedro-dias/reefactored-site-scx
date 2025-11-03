@@ -1,31 +1,92 @@
-@import "../../variables.scss";
-
+@use "../../variables.scss" as *;
 
 .backgroundImg {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.4) 0%, $accent-color 110% ), url(../../../assets/website-images/logo-redimensionada.png);
+  background: linear-gradient(135deg, $accent-color 0%, $main-color 100%);
+  background-attachment: fixed;
+  padding: 4em 1em;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../assets/website-images/logo-redimensionada.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 60vw;
+    opacity: 0.18;
+    z-index: 0;
+    transition: background-size 0.3s ease;
+  }
 
-    .maxWidth {
-        margin: auto;
+  .maxWidth {
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3em;
+  }
+
+  .title {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 1.2em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    line-height: 1.8em;
+    font-weight: 300;
+    max-width: 700px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .backgroundImg {
+    padding: 2em 1em;
+    min-height: auto;
+
+    &::before {
+      background-size: 120vw;
     }
 
     .title {
-        text-align: center;
-        color: white;
-        font-weight: 400;
-        font-size: 1.8em;
-        padding: 2em 0 0;
+      font-size: 2em;
     }
 
     p {
-        font-size: 1em;
-        text-align: center;
-        color: white;
-        margin: 1em 0;
-        line-height: 1.6em;
-        font-weight: 300;
-        margin: 2em 0;
-    }   
+      font-size: 1em;
+    }
+
+    .maxWidth {
+      gap: 2em;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .backgroundImg {
+    &::before {
+      background-size: 80vw;
+    }
+  }
 }

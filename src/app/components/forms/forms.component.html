@@ -1,31 +1,35 @@
 <div [formGroup]="form" class="formContainer">
-  <form action="javascript:void(0)" (submit)="send()" class="form">
-    <label for="name" class="fieldset_label">Empresa</label>
+  <form (ngSubmit)="send($event)" class="form">
+    <label for="name" class="fieldset_label">{{
+      "contact.form.company" | translate
+    }}</label>
     <input
       formControlName="from_name"
       type="text"
       name="name"
       id="name"
+      [placeholder]="'contact.form.placeholder.company' | translate"
       required
-      ngModel
       autocomplete="off"
       class="fieldset_input"
-      required
     />
 
-    <label for="email" class="fieldset_label">E-mail</label>
+    <label for="email" class="fieldset_label">{{
+      "contact.form.email" | translate
+    }}</label>
     <input
       formControlName="from_email"
       type="email"
       name="email"
       id="email"
-      placeholder="example@example.com"
+      [placeholder]="'contact.form.placeholder.email' | translate"
       class="fieldset_input"
       required
-      ngModel
     />
 
-    <label for="subject" class="fieldset_label">Assunto</label>
+    <label for="subject" class="fieldset_label">{{
+      "contact.form.subject" | translate
+    }}</label>
     <input
       formControlName="subject"
       type="text"
@@ -33,30 +37,39 @@
       id="subject"
       autocomplete="off"
       class="fieldset_input"
-      placeholder="Digite o assunto"
+      [placeholder]="'contact.form.placeholder.subject' | translate"
       required
-      ngModel
     />
 
-    <label for="message" class="fieldset_label">Mensagem</label>
+    <label for="message" class="fieldset_label">{{
+      "contact.form.message" | translate
+    }}</label>
     <textarea
       formControlName="message"
       type="text"
       name="message"
       id="message"
-      maxlength="200"
-      placeholder="Digite sua mensagem"
+      maxlength="500"
+      [placeholder]="'contact.form.placeholder.message' | translate"
       required
-      ngModel
+      rows="6"
     ></textarea>
 
-    <!-- {{ form.value | json }} -->
     <div class="flexContainer">
-      <button type="submit">Enviar Mensagem</button>
+      <button type="button" (click)="send()">
+        <span *ngIf="!isSubmitting">{{
+          "contact.form.sendMessage" | translate
+        }}</span>
+        <span *ngIf="isSubmitting">{{ "common.loading" | translate }}</span>
+      </button>
     </div>
   </form>
-  <div class="container-message">
-    <div class="container-message-background">
+  <div
+    *ngIf="successMessage || errorMessage"
+    class="popup-overlay"
+    [class.hiding]="isHiding"
+  >
+    <div class="popup-content">
       <div *ngIf="successMessage" class="successMessage">
         {{ successMessage }}
       </div>

@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@use "../../variables.scss" as *;
 
 section {
     background: linear-gradient($accent-color, $main-color );;
