@@ -1,8 +1,17 @@
 <app-header></app-header>
 <main>
     <section class="heroBanner">
-        <img srcset="../../../assets/website-images/images-home/container500x500.png 500w, ../../../assets/website-images/images-home/navio-frente-1024x576.png 1024w, ../../../assets/website-images/images-home/ship-home-1920x700.png 1920w"
-        sizes="(max-width: 400px) 100vw>">
+        <img
+            src="../../../assets/website-images/images-home/ship-home-1920x700.png"
+            srcset="../../../assets/website-images/images-home/container500x500.png 500w, ../../../assets/website-images/images-home/navio-frente-1024x576.png 1024w, ../../../assets/website-images/images-home/ship-home-1920x700.png 1920w"
+            sizes="100vw"
+            width="1920"
+            height="700"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            alt="Navio de carga no mar"
+        >
     </section>
 
     <section class="mainContent">
@@ -32,7 +41,7 @@
                         <a routerLink="/frete-maritimo" class="btn">
                             <article class="col col-sm-12 col-md-6 col-xl-3">
                                 
-                                <div class="icon"><img src="../../../assets/icons/ship.svg"/></div>
+                                <div class="icon"><img src="../../../assets/icons/ship.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone navio"/></div>
                 
                                 <h3>{{ 'navigation.freteMaritimo' | translate }}</h3>
                                 
@@ -42,7 +51,7 @@
                         <a routerLink="/frete-aereo" class="btn">
                             <article class="col col-sm-12 col-md-6 col-xl-3">
                                 
-                                <div class="icon"><img src="../../../assets/icons/airplane.svg"/></div>
+                                <div class="icon"><img src="../../../assets/icons/airplane.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone avião"/></div>
                 
                                 <h3>{{ 'navigation.freteAereo' | translate }}</h3>
                                 
@@ -52,7 +61,7 @@
                         <a routerLink="/transporte-rodoviario" class="btn">
                             <article class="col col-sm-12 col-md-6 col-xl-3">
                                 
-                                <div class="icon"><img src="../../../assets/icons/truck.svg"/></div>
+                                <div class="icon"><img src="../../../assets/icons/truck.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone caminhão"/></div>
                 
                                 <h3>{{ 'navigation.transporteRodoviario' | translate }}</h3>
                                 
@@ -61,7 +70,7 @@
                         <a routerLink="/desembaraco-aduaneiro" class="btn">
                             <article class="col col-sm-12 col-md-6 col-xl-3">
                                 
-                                <div class="icon"><img src="../../../assets/icons/display.svg"/></div>
+                                <div class="icon"><img src="../../../assets/icons/display.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone monitor"/></div>
                 
                                 <h3>{{ 'navigation.desembaracoAduaneiro' | translate }}</h3>
                                 
@@ -73,7 +82,7 @@
                         <a routerLink="/seguro-carga" class="btn">
                             <article class="col col-sm-12 col-md-6 col-xl-3">
                                 
-                                <div class="icon"><img src="../../../assets/icons/shield.svg"/></div>
+                                <div class="icon"><img src="../../../assets/icons/shield.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone escudo"/></div>
                                     
                                 <h3>{{ 'navigation.seguroCarga' | translate }}</h3>
                                 
@@ -90,8 +99,16 @@
                             </div>
         
                             <div class="imageMainContent">
-                                <img srcset="../../../assets/website-images/images-home/mapa-azul-circle.png 2560w"
-                                sizes="(max-width: 600px) 200vw">
+                                <img
+                                    src="../../../assets/website-images/images-home/mapa-azul-circle.png"
+                                    srcset="../../../assets/website-images/images-home/mapa-azul-circle.png 2560w"
+                                    sizes="(max-width: 1000px) 100vw, 40vw"
+                                    width="2560"
+                                    height="2560"
+                                    loading="lazy"
+                                    decoding="async"
+                                    alt="Mapa com destaque global"
+                                >
                             </div>
                         </div>
                     </section>

@@ -1,8 +1,8 @@
 <app-header></app-header>
 <main>
     <!-- <section class="heroBanner">
-        <img srcset="../../../assets/website-images/images-des-adu/caminhao-estrada2.jpg 600w, ../../../assets/website-images/images-des-adu/truck-1920x540.png, 1920w"
-        sizes="(min-width: 400px) 100vw>">
+        <img srcset="../../../assets/website-images/images-des-adu/caminhao-estrada2.jpg 600w, ../../../assets/website-images/images-des-adu/truck-1920x540.png 1920w"
+        sizes="100vw">
     </section> -->
 
     <section class="mainContent">
@@ -18,8 +18,16 @@
                         <p>{{ 'services.desembaracoAduaneiro.description3' | translate }}</p>
                     </article>
                     <div class="imageMainContent">
-                        <img srcset="../../../assets/website-images/images-des-adu/desembaraco-circle.png 2560w"
-                        sizes="(max-width: 600px) 200vw">
+                        <img
+                            src="../../../assets/website-images/images-des-adu/desembaraco-circle.png"
+                            srcset="../../../assets/website-images/images-des-adu/desembaraco-circle.png 2560w"
+                            sizes="(max-width: 1000px) 100vw, 40vw"
+                            width="2560"
+                            height="2560"
+                            loading="lazy"
+                            decoding="async"
+                            alt="Operação de desembaraço aduaneiro"
+                        >
                     </div>
                 </div>
             </section>

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -15,18 +16,22 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   title = 'SCX Agencimentos Marítimos';
   private translate = inject(TranslateService);
+  private platformId = inject(PLATFORM_ID);
+  private document = inject(DOCUMENT);
 
   ngOnInit(): void {
-    const savedLang = localStorage.getItem('language') || 'pt';
+    const isBrowser = isPlatformBrowser(this.platformId);
+    const savedLang = isBrowser ? localStorage.getItem('language') || 'pt' : 'pt';
+
     this.translate.setDefaultLang('pt');
     this.translate.use(savedLang);
-    document.documentElement.lang = savedLang;
+    this.document.documentElement.lang = savedLang;
     
     const browserLang = this.translate.getBrowserLang();
-    if (browserLang && ['pt', 'en'].includes(browserLang) && !localStorage.getItem('language')) {
+    if (isBrowser && browserLang && ['pt', 'en'].includes(browserLang) && !localStorage.getItem('language')) {
       this.translate.use(browserLang);
       localStorage.setItem('language', browserLang);
-      document.documentElement.lang = browserLang;
+      this.document.documentElement.lang = browserLang;
     }
   }
 }
