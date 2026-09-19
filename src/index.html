@@ -21,15 +21,27 @@
 
   <link rel="icon" type="image/png" href="assets/website-images/logo-scx.png">
 
-  <!-- Tema antes da primeira pintura. Sem isto o site carrega claro e
-       "pisca" para escuro quando o Angular sobe, em toda navegação. -->
+  <!-- Tema antes da primeira pintura. Sem isto o site carrega num tema e
+       "pisca" para o outro quando o Angular sobe, em toda navegação.
+
+       Precedência: escolha gravada > tema do sistema. Mesma regra do
+       ThemeService — se mudar lá, mude aqui. -->
   <script>
     (function () {
-      var theme = 'light';
+      var theme = null;
       try {
         var saved = localStorage.getItem('theme');
         if (saved === 'dark' || saved === 'light') theme = saved;
       } catch (e) {}
+
+      if (!theme) {
+        theme =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+      }
+
       document.documentElement.dataset.theme = theme;
     })();
   </script>
