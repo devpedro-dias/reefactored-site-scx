@@ -1,513 +1,348 @@
 @use "../../variables.scss" as *;
 
-.language-nav-item {
-  display: inline-block;
-  vertical-align: middle;
-  padding: 0 30px;
-  margin: 0;
+// Toda página começa com uma superfície "feature" (hero), então o
+// cabeçalho herda o contraste dela — funciona nos dois temas sem
+// nenhuma cor fixa aqui.
 
-  @media screen and (max-width: 1199px) {
-    display: block;
-    margin-left: 0;
-    margin-top: 1rem;
-    width: 100%;
-    padding: 0;
-    text-align: center;
-  }
-}
-
-.top-header {
+.hdr {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: var(--header-h);
   display: flex;
-  justify-content: center;
   align-items: center;
+  color: var(--on-feature);
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--ease-fast) var(--ease-out),
+    border-color var(--ease-fast) var(--ease-out),
+    height var(--ease-dur) var(--ease-out);
 
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
+  &.is-condensed {
+    height: 62px;
+    @include glass;
+    border-bottom-color: var(--feature-hairline);
   }
+}
 
-  .top-header-cta:nth-child(1) {
-    display: flex;
-    align-items: center;
-    margin-left: 0.5em;
+.hdr__inner {
+  @include shell(1320px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hdr__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+// -------------------------------------------------------------------
+//  Marca
+// -------------------------------------------------------------------
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+
+  &:hover .brand__mark {
+    transform: rotate(-12deg) scale(1.06);
   }
+}
 
-  .top-header-cta:nth-child(2) {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #027786;
-    justify-content: center;
-    margin-right: auto;
+.brand__mark {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform var(--ease-dur) var(--ease-out);
+}
 
-    .flexTopHeader {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
 
-      .uppercase {
-        text-transform: uppercase;
-      }
-    }
+.brand__name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
+}
+
+.brand__sub {
+  @include eyebrow;
+  font-size: 0.5625rem;
+  color: var(--brand-sub);
+
+  @include below(mobile) {
+    display: none;
   }
+}
 
-  svg {
-    fill: $main-color;
+// -------------------------------------------------------------------
+//  Navegação desktop
+// -------------------------------------------------------------------
+
+.nav {
+  @include below(desktop) {
+    display: none;
   }
+}
 
-  .links-container {
-    display: flex;
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+}
 
-    .flexLinkContainer {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      justify-content: center;
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-full);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--on-feature-muted);
+  transition:
+    color var(--ease-fast) var(--ease-out),
+    background var(--ease-fast) var(--ease-out);
 
-      ul {
-        list-style-type: none;
-        display: flex;
-        align-items: center;
-        padding: 0;
-        flex-wrap: wrap;
+  &:hover,
+  &.is-active {
+    color: var(--on-feature);
+    background: var(--feature-hover);
+  }
+}
 
-        &.services {
-          flex-wrap: nowrap;
-        }
-      }
+.nav__trigger.is-open {
+  color: var(--on-feature);
+  background: var(--feature-hover);
+}
 
-      ul:nth-child(2) {
-        display: none;
-      }
+.nav__chevron {
+  transition: transform var(--ease-fast) var(--ease-out);
 
-      li > .btn {
-        font-size: 1.14em;
-        text-decoration: none;
-        padding: 0.7em 1em;
-        color: $main-color;
-        font-weight: 700;
-        display: block;
-        font-weight: 500;
-      }
+  .nav__trigger.is-open & {
+    transform: rotate(180deg);
+  }
+}
+
+.nav__dropdown {
+  position: relative;
+
+  @media (hover: hover) {
+    &:hover .nav__panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
   }
 }
 
-#sidebar-active {
+.nav__panel {
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  left: 0;
+  min-width: 250px;
+  padding: var(--space-2);
+  border-radius: var(--r-lg);
+  @include glass(true);
+  border: 1px solid var(--feature-hairline);
+  box-shadow: var(--sh-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--ease-fast) var(--ease-out),
+    transform var(--ease-fast) var(--ease-out),
+    visibility var(--ease-fast);
+
+  ul {
+    list-style: none;
+  }
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.nav__panel-link {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--r-md);
+  font-size: var(--t-sm);
+  color: var(--on-feature-muted);
+  border-left: 2px solid transparent;
+  transition:
+    background var(--ease-fast) var(--ease-out),
+    color var(--ease-fast) var(--ease-out),
+    border-color var(--ease-fast) var(--ease-out);
+
+  &:hover,
+  &.is-active {
+    background: var(--feature-hover);
+    border-left-color: var(--signal);
+    color: var(--on-feature);
+  }
+}
+
+.hdr__cta {
+  @include below(desktop) {
+    display: none;
+  }
+}
+
+// -------------------------------------------------------------------
+//  Botão hambúrguer
+// -------------------------------------------------------------------
+
+.burger {
   display: none;
-}
+  width: 42px;
+  height: 42px;
+  position: relative;
+  border-radius: var(--r-md);
 
-.open-sidebar-button,
-.close-sidebar-button {
-  display: none;
-}
-
-@media screen and (max-width: 400px) {
-  .top-header-logo {
-    img {
-      width: 8em;
-      height: 8em;
-    }
-  }
-
-  .top-header-logo_name {
-    font-size: 1.4em;
-    text-align: left;
-    line-height: 1.2;
-  }
-}
-
-@media screen and (min-width: 401px) {
-  .top-header {
-    .top-header-logo {
-      img {
-        width: 8em;
-        height: 8em;
-      }
-    }
-
-    .flexTopHeader {
-      .top-header-logo_name {
-        font-size: 1.5em;
-        text-align: left;
-        line-height: 1.2;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .top-header {
-    .top-header-logo {
-      img {
-        width: 9em;
-        height: 9em;
-      }
-    }
-    .flexTopHeader {
-      .top-header-logo_name {
-        font-size: 1.7em;
-        text-align: left;
-        line-height: 1.2;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .top-header {
-    .top-header-logo {
-      img {
-        width: 8em;
-        height: 8em;
-      }
-    }
-
-    .flexTopHeader {
-      .top-header-logo_name {
-        font-size: 1.8em;
-        text-align: left;
-        line-height: 1.2;
-      }
-    }
-    .links-container {
-      .flexLinkContainer {
-        flex-direction: column;
-
-        ul:nth-child(2) {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1201px) {
-  .top-header {
-    max-width: 100%;
-    .top-header-cta:nth-child(1) {
-      margin-right: 3em;
-    }
-
-    .top-header-logo {
-      img {
-        width: 8em;
-        height: 8em;
-      }
-    }
-
-    .flexTopHeader {
-      .top-header-logo_name {
-        font-size: 1.8em;
-        text-align: left;
-        line-height: 1.2;
-      }
-
-      .top-header-cta:nth-child(1) {
-        margin-right: 3em;
-      }
-    }
-
-    .flexLinkContainer {
-      display: flex;
-      flex-direction: row;
-
-      div {
-        #navbar {
-          display: none;
-        }
-      }
-
-      nav {
-        &.primary-navigation {
-          margin: 0 auto;
-          display: block;
-
-          padding: 0 0;
-          text-align: center;
-          font-size: 16px;
-
-          ul.services {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-
-            li {
-              flex-shrink: 0;
-              white-space: nowrap;
-              position: relative;
-            }
-
-            li.language-nav-item {
-              flex-shrink: 0;
-            }
-          }
-
-          ul.services > li {
-            list-style: none;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            padding: 0 30px;
-            position: relative;
-            text-decoration: none;
-            text-align: center;
-            vertical-align: middle;
-          }
-
-          ul li.language-nav-item {
-            padding: 0 15px;
-            display: inline-block;
-            vertical-align: middle;
-            white-space: nowrap;
-          }
-
-          ul.services li.language-nav-item {
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            flex-shrink: 0;
-          }
-
-          li a {
-            color: $main-color;
-          }
-
-          li a:hover {
-            color: $accent-color;
-          }
-
-          // Estilo para botões de idioma dentro da navbar desktop
-          ul.services li.language-nav-item {
-            padding: 0 30px;
-
-            .language-switcher {
-              gap: 0;
-
-              .lang-btn {
-                font-size: 1.14em;
-                text-decoration: none;
-                padding: 0.7em 1em;
-                color: $main-color;
-                font-weight: 500;
-
-                &:hover {
-                  color: $accent-color;
-                }
-
-                &.active {
-                  color: $accent-color;
-                }
-              }
-            }
-          }
-
-          li:hover {
-            cursor: pointer;
-          }
-
-          // Estilo para o dropdown dentro de ul.services
-          ul.services li .dropdown {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            display: block !important;
-            background: white;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            min-width: 250px;
-            box-shadow: 0px 3px 5px -1px #ccc;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 1000;
-            border-radius: 4px;
-            flex-direction: column;
-          }
-
-          ul.services li:hover .dropdown {
-            visibility: visible;
-            opacity: 1;
-          }
-
-          ul.services li .dropdown li {
-            display: block !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            clear: both;
-            text-align: left !important;
-            border-style: none;
-            position: relative;
-            flex-shrink: 1;
-            white-space: normal !important;
-          }
-
-          ul.services li .dropdown li a {
-            display: block;
-            padding: 0.7em 1em;
-            color: $main-color;
-            text-decoration: none;
-            font-size: 1.14em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-
-            &:hover {
-              background-color: rgba($main-color, 0.1);
-              color: $accent-color;
-            }
-          }
-        }
-      }
-
-      a {
-        text-decoration: none;
-
-        &:hover {
-          color: $accent-color;
-        }
-      }
-
-      ul li ul li a {
-        transition: all 0.5s ease;
-      }
-
-      // Estilo para o item de idioma na navbar desktop
-      ul li.language-nav-item {
-        padding: 0 15px;
-        display: inline-block;
-        vertical-align: middle;
-      }
-    }
-  }
-}
-
-@media (max-width: 1199px) {
-  .top-header-logo {
-    margin-right: 0;
-
-    .top-header-logo_name {
-      text-align: center;
-      font-size: 1.6em;
-      line-height: 1.2;
-    }
-  }
-
-  .links-container {
-    flex-direction: column;
-
-    position: fixed;
-    top: 0;
-    right: -100%;
-    z-index: 10;
-    width: 100%;
-    height: 100vh;
-
-    backdrop-filter: blur(0.8em);
-    background-color: hsla(0, 0%, 100%, 0.705);
-
-    transition: 1s ease-out;
-
-    .flexLinkContainer {
-      gap: 6em;
-
-      li .btn {
-        font-size: 1.4em;
-      }
-    }
-  }
-
-  .flexLinkContainer {
-    gap: 6em;
-
-    li .btn {
-      font-size: 1.4em;
-    }
-  }
-
-  .nav_header_icon {
-    display: flex;
-    gap: 1em;
-
-    .icon_header {
-      font-size: 1.8em;
-      color: $main-color;
-    }
-  }
-
-  #navbar {
-    flex-direction: column;
-  }
-
-  .close-sidebar-button {
-    padding: 2em 2em 4em;
-    display: block;
-  }
-  .open-sidebar-button {
-    padding: 4em 1em;
+  @include below(desktop) {
     display: block;
   }
 
-  #sidebar-active:checked ~ .links-container {
-    right: 0;
+  span {
+    position: absolute;
+    left: 11px;
+    width: 20px;
+    height: 1.5px;
+    background: var(--on-feature);
+    border-radius: 2px;
+    transition: transform var(--ease-fast) var(--ease-out);
   }
 
-  #sidebar-active:checked ~ #overlay {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9;
+  span:nth-child(1) {
+    top: 17px;
   }
-}
+  span:nth-child(2) {
+    top: 24px;
+  }
 
-@media (min-width: 1551px) {
-  .top-header {
-    max-width: 95%;
+  &.is-open span:nth-child(1) {
+    transform: translateY(3.5px) rotate(45deg);
+  }
 
-    .top-header-logo {
-      margin-right: 0;
-
-      img {
-        width: 10em;
-        height: 10em;
-      }
-    }
-
-    .flexTopHeader {
-      .top-header-logo_name {
-        text-align: left;
-        font-size: 2em;
-        line-height: 1.2;
-      }
-    }
-
-    .links-container {
-      .flexLinkContainer {
-        margin-top: 1em;
-        justify-content: center;
-        gap: 1em;
-      }
-    }
-
-    .nav_header_icon {
-      gap: 1em;
-
-      .icon_header {
-        font-size: 1.2em;
-        color: $main-color;
-      }
-    }
+  &.is-open span:nth-child(2) {
+    transform: translateY(-3.5px) rotate(-45deg);
   }
 }
 
-@media (min-width: 391px) {
-  .top-header {
-    margin: auto;
-    gap: 0;
+// -------------------------------------------------------------------
+//  Drawer mobile
+// -------------------------------------------------------------------
+
+// O véu é escuro nos dois temas: ele existe para apagar a página
+// atrás do menu, não para acompanhar a superfície.
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(5, 22, 28, 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--ease-dur) var(--ease-out),
+    visibility var(--ease-dur);
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
   }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 120;
+  width: min(86vw, 360px);
+  height: 100dvh;
+  padding: var(--space-8) var(--space-6) var(--space-6);
+  background: var(--feature-bg);
+  border-left: 1px solid var(--feature-hairline);
+  color: var(--on-feature);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  overflow-y: auto;
+  transform: translateX(100%);
+  // visibility, além do transform: na primeira pintura o navegador anima
+  // o transform inicial, e sem isso o drawer aparece deslizando para fora
+  // toda vez que a página carrega no mobile.
+  visibility: hidden;
+  transition:
+    transform var(--ease-dur) var(--ease-out),
+    visibility var(--ease-dur);
+
+  &.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  @include respond-to(desktop) {
+    display: none;
+  }
+}
+
+.drawer__nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-8);
+}
+
+.drawer__link {
+  padding: var(--space-4) 0;
+  font-family: var(--font-display);
+  font-size: var(--t-lg);
+  border-bottom: 1px solid var(--feature-hairline);
+  transition: color var(--ease-fast) var(--ease-out);
+
+  &--sub {
+    font-family: var(--font-body);
+    font-size: var(--t-base);
+    padding: var(--space-3) 0 var(--space-3) var(--space-4);
+    color: var(--on-feature-muted);
+  }
+
+  &:hover,
+  &.is-active {
+    color: var(--signal);
+  }
+}
+
+.drawer__label {
+  @include eyebrow;
+  color: var(--feature-accent);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+.drawer__foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.drawer__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }

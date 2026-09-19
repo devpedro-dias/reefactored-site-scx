@@ -1,0 +1,22 @@
+<div
+  #host
+  class="globe"
+  [class.is-ready]="ready()"
+  [class.is-fallback]="useFallback()"
+  aria-hidden="true"
+>
+  @if (useFallback()) {
+    <div class="globe__static">
+      <span class="globe__orbit globe__orbit--a"></span>
+      <span class="globe__orbit globe__orbit--b"></span>
+      <img
+        src="assets/website-images/images-home/mapa-azul-circle.png"
+        alt=""
+        width="560"
+        height="560"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  }
+</div>

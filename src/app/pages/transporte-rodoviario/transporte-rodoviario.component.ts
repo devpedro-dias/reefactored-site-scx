@@ -1,22 +1,34 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { ContatoContentComponent } from '../../components/contato-content/contato-content.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ServiceLayoutComponent } from '../../components/service-layout/service-layout.component';
+import { ServicePageConfig } from '../../components/service-layout/service-layout.model';
 
 @Component({
   selector: 'app-transporte-rodoviario',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    RouterModule, CommonModule, FooterComponent, ContatoContentComponent,
-    TranslateModule
-  ],
-  templateUrl: './transporte-rodoviario.component.html',
-  styleUrl: './transporte-rodoviario.component.scss'
+  imports: [ServiceLayoutComponent],
+  template: '<app-service-layout [config]="config" />',
 })
 export class TransporteRodoviarioComponent {
-
+  readonly config: ServicePageConfig = {
+    key: 'transporteRodoviario',
+    navKey: 'navigation.transporteRodoviario',
+    descriptionCount: 3,
+    image: 'website-images/images-transp-rod/truck-circle.png',
+    imageAlt: 'Caminhão de transporte rodoviário',
+    support: {
+      titleKey: 'supportTitle',
+      descriptionKeys: ['supportDescription'],
+    },
+    // Sem listTitleKey: o texto de suporte já introduz a lista, então o
+    // layout cai no rótulo genérico "O que oferecemos".
+    items: [
+      'receiving',
+      'storage',
+      'handling',
+      'pickingPacking',
+      'shipping',
+      'vmi',
+    ],
+    footnoteKey: 'vmiDescription',
+  };
 }

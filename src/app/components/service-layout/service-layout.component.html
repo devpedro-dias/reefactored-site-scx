@@ -1,0 +1,100 @@
+<app-header />
+
+<main id="conteudo">
+  <!-- Hero da página -->
+  <section class="phero u-feature">
+    <div class="phero__grain" aria-hidden="true"></div>
+
+    <div class="phero__inner">
+      <div class="phero__copy">
+        <nav class="phero__crumbs" aria-label="breadcrumb">
+          <a routerLink="/">{{ 'navigation.home' | translate }}</a>
+          <span aria-hidden="true">/</span>
+          <span>{{ cfg.navKey | translate }}</span>
+        </nav>
+
+        <h1 class="phero__title">{{ fullKey('title') | translate }}</h1>
+      </div>
+
+      <figure class="phero__media">
+        <span class="phero__ring" aria-hidden="true"></span>
+        <img
+          [src]="'assets/' + cfg.image"
+          [alt]="cfg.imageAlt"
+          width="640"
+          height="640"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- Texto de abertura -->
+  <section class="intro">
+    <div class="intro__inner">
+      <p class="u-eyebrow" appReveal>{{ 'services.overview' | translate }}</p>
+
+      <div class="intro__body">
+        @for (key of descriptionKeys(); track key; let i = $index) {
+          <p [appReveal]="i * 80" [class.intro__lede]="i === 0">{{ key | translate }}</p>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Suporte ao cliente — vem antes da lista porque, nas páginas de
+       desembaraço e rodoviário, é esse texto que a introduz. -->
+  @if (cfg.support) {
+    <section class="support">
+      <div class="support__inner" appReveal>
+        <h2 class="support__title">{{ fullKey(cfg.support.titleKey) | translate }}</h2>
+        <div class="support__body">
+          @for (key of cfg.support.descriptionKeys; track key) {
+            <p>{{ fullKey(key) | translate }}</p>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- Lista de sub-serviços -->
+  @if (cfg.items?.length) {
+    <section class="offer">
+      <div class="offer__inner">
+        @if (cfg.listTitleKey) {
+          <h2 class="offer__title" appReveal>{{ fullKey(cfg.listTitleKey) | translate }}</h2>
+        } @else {
+          <h2 class="offer__title" appReveal>{{ 'services.whatWeOffer' | translate }}</h2>
+        }
+
+        <div class="offer__list">
+          @for (item of cfg.items; track item; let i = $index) {
+            <details class="acc" name="offer-panel" [appReveal]="i * 50">
+              <summary class="acc__summary">
+                <span class="acc__index u-mono">{{ indexLabel(i) }}</span>
+                <span class="acc__label">{{ itemKey(item, 'title') | translate }}</span>
+                <span class="acc__icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </summary>
+              <div class="acc__body">
+                <p>{{ itemKey(item, 'description') | translate }}</p>
+              </div>
+            </details>
+          }
+        </div>
+
+        @if (cfg.footnoteKey) {
+          <p class="offer__footnote" appReveal>{{ fullKey(cfg.footnoteKey) | translate }}</p>
+        }
+      </div>
+    </section>
+  }
+
+  <app-contato-content />
+</main>
+
+<app-footer />

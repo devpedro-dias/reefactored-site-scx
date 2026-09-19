@@ -1,24 +1,136 @@
-$main-color: #31859b;
-$accent-color: #225c6a;
+@use "sass:map";
+@use "sass:color";
+
+// =============================================================
+//  SCX — Design tokens
+//  Conceito: "Instrumento de Navegação".
+//  A paleta nasce do logo: fitas verde-água orbitando um globo,
+//  cortadas por setas azuis. Petróleo profundo como base, âmbar
+//  como sinal — a cor dos contêineres e das luzes de porto.
+// =============================================================
+
+// ---------- Marca (compat: nomes antigos preservados) ----------
+$main-color: #31859b; // teal SCX — âncora da marca
+$accent-color: #225c6a; // petróleo profundo
 $text-color: #f0f0f0;
 $gradient: linear-gradient(transparent 50%, $main-color 50%);
 $default-gap: 1rem;
 
-// Breakpoints for responsive design
+// ---------- Profundidades (escuro) ----------
+$abyss: #05161c; // fundo do hero
+$deep: #0a2630;
+$petrol: #225c6a;
+$teal: #31859b;
+$teal-bright: #46a7c0;
+$seafoam: #7cc4b4; // fitas do logo
+$arrow: #3d8fc4; // setas do logo
+
+// ---------- Sinal ----------
+// A cor de ação não é fixa: ela vive em --signal / --on-signal e troca
+// com o tema, para ser sempre a cor de marca mais saturada contra o
+// próprio fundo. Não reintroduzir uma constante aqui.
+
+// ---------- Neutros ----------
+$paper: #f6f9f9;
+$mist: #e4ecee;
+$steel: #8ea6ad;
+$slate: #4a6169;
+$ink: #0d1f24;
+
+// ---------- Estado ----------
+$ok: #10b981;
+$err: #ef4444;
+
+// ---------- Breakpoints ----------
 $breakpoints: (
   mobile: 480px,
   tablet: 768px,
   desktop: 1024px,
   large: 1280px,
-  xlarge: 1536px
+  xlarge: 1536px,
 );
 
-// Mixin for responsive media queries
-@use "sass:map";
 @mixin respond-to($breakpoint) {
   @if map.has-key($breakpoints, $breakpoint) {
     @media (min-width: map.get($breakpoints, $breakpoint)) {
       @content;
     }
+  }
+}
+
+// Abaixo de um breakpoint — para o caminho mobile-first inverso.
+@mixin below($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: (map.get($breakpoints, $breakpoint) - 1px)) {
+      @content;
+    }
+  }
+}
+
+// =============================================================
+//  Mixins de composição
+// =============================================================
+
+/// Largura máxima de leitura com respiro lateral consistente.
+@mixin shell($max: 1240px) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/// Ritmo vertical das seções.
+@mixin section-rhythm {
+  padding-block: var(--space-16);
+
+  @include respond-to(desktop) {
+    padding-block: var(--space-24);
+  }
+}
+
+/// Texto pequeno em caixa alta usado como rótulo/eyebrow.
+@mixin eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/// Vidro do cabeçalho e dos painéis flutuantes.
+/// A cor vem do tema; `$strong` escolhe a variante mais opaca.
+@mixin glass($strong: false) {
+  background: if($strong, var(--glass-strong), var(--glass));
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/// Foco visível coerente em todo o site.
+@mixin focus-ring {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/// Sublinhado que cresce da esquerda no hover.
+@mixin underline-grow($color: currentColor, $thickness: 1px) {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    width: 100%;
+    height: $thickness;
+    background: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--ease-dur) var(--ease-out);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
   }
 }

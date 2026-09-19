@@ -1,16 +1,35 @@
-<section>
-    <div>
-      <h2>{{ 'cotacao.title' | translate }} {{ myDate | date:dateFormat:dateLocale }}</h2>
-    </div>
-  
-    <div *ngIf="moedas.length > 0" class="cotacaoContainer">
-      <div *ngFor="let moeda of moedas" class="cotacaoContainer_content">
-        <p>{{ moeda.code }}</p>
-        <p><span class="green-text">{{ parseToNumber(moeda.high) | currency:'BRL':'symbol':'1.4-4' }}</span></p>
-      </div>
-    </div>
-    <div *ngIf="moedas.length === 0">
-      <p>{{ 'common.loading' | translate }}</p>
-    </div>
-  </section>
-    
+<section class="rate-panel">
+  <header class="rate-panel__head">
+    <p class="u-eyebrow">{{ 'cotacao.subtitle' | translate }}</p>
+    <h2 class="rate-panel__title">
+      {{ 'cotacao.title' | translate }}
+      <time class="rate-panel__date">{{ myDate | date: dateFormat : '' : dateLocale }}</time>
+    </h2>
+  </header>
+
+  @if (moedas.length > 0) {
+    <ul class="rate-panel__list" role="list">
+      @for (moeda of moedas; track moeda.code) {
+        <li class="rate">
+          <span class="rate__code">{{ moeda.code }}/BRL</span>
+          <span class="rate__value">
+            {{ parseToNumber(moeda.high) | currency: 'BRL' : 'symbol' : '1.4-4' : dateLocale }}
+          </span>
+          <span class="rate__name">{{ moeda.name }}</span>
+        </li>
+      }
+    </ul>
+
+    <p class="rate-panel__note">{{ 'cotacao.note' | translate }}</p>
+  } @else {
+    <ul class="rate-panel__list" role="list" aria-hidden="true">
+      @for (skeleton of [0, 1]; track skeleton) {
+        <li class="rate rate--loading">
+          <span class="rate__code"></span>
+          <span class="rate__value"></span>
+        </li>
+      }
+    </ul>
+    <p class="u-sr-only">{{ 'common.loading' | translate }}</p>
+  }
+</section>

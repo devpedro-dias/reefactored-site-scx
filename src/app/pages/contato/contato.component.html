@@ -1,11 +1,43 @@
-<app-header></app-header>
-<main>
-    <section class="backgroundImg">
-        <div class="maxWidth">
-            <h1 class="title">{{ 'contact.title' | translate }}</h1>
-            <p>{{ 'contact.description' | translate }}</p>
-            <app-forms></app-forms>
-        </div>
-    </section>
+<app-header />
+
+<main id="conteudo">
+  <!-- Abertura em superfície de destaque: mantém o padrão das outras
+       páginas e dá ao cabeçalho o contraste de que ele precisa. -->
+  <section class="ctt-top u-feature">
+    <div class="ctt-top__grain" aria-hidden="true"></div>
+    <div class="ctt-top__inner">
+      <p class="u-eyebrow">{{ 'contact.eyebrow' | translate }}</p>
+      <h1 class="ctt-top__title">{{ 'contact.title' | translate }}</h1>
+      <p class="ctt-top__lede">{{ 'contact.description' | translate }}</p>
+    </div>
+  </section>
+
+  <section class="ctt">
+    <div class="ctt__inner">
+      <aside class="ctt__aside">
+        <h2 class="ctt__direct-title">{{ 'contact.directTitle' | translate }}</h2>
+
+        <a href="tel:+551333215574" class="ctt__line">
+          <span class="ctt__line-label u-mono">{{ 'contact.phoneLabel' | translate }}</span>
+          <span class="ctt__line-value">(13) 3321-5574</span>
+        </a>
+
+        <a href="mailto:scx@scxagenciamentos.com" class="ctt__line">
+          <span class="ctt__line-label u-mono">{{ 'contact.emailLabel' | translate }}</span>
+          <span class="ctt__line-value">scx&commat;scxagenciamentos.com</span>
+        </a>
+
+        <p class="ctt__note">
+          <span class="ctt__pulse" aria-hidden="true"></span>
+          {{ 'contact.responseNote' | translate }}
+        </p>
+      </aside>
+
+      <div class="ctt__form" appReveal>
+        <app-forms />
+      </div>
+    </div>
+  </section>
 </main>
-<app-footer></app-footer>
+
+<app-footer />

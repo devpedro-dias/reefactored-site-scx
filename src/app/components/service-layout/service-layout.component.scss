@@ -1,0 +1,297 @@
+@use "../../variables.scss" as *;
+
+// ===================================================================
+//  Hero da página
+// ===================================================================
+
+.phero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--header-h) + var(--space-16));
+  padding-bottom: var(--space-16);
+  background:
+    radial-gradient(74% 70% at 82% 34%, var(--feature-glow), transparent 62%),
+    var(--feature-bg);
+
+  @include respond-to(desktop) {
+    padding-top: calc(var(--header-h) + var(--space-20));
+    padding-bottom: var(--space-20);
+  }
+}
+
+// Mesma trama de pontos do hero da home: amarra as páginas visualmente.
+.phero__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: radial-gradient(var(--feature-grain) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(64% 70% at 70% 40%, #000, transparent 76%);
+  -webkit-mask-image: radial-gradient(64% 70% at 70% 40%, #000, transparent 76%);
+}
+
+.phero__inner {
+  @include shell(1320px);
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-10);
+  align-items: center;
+
+  @include respond-to(desktop) {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: var(--space-12);
+  }
+}
+
+.phero__crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  @include eyebrow;
+  color: var(--feature-accent);
+
+  a {
+    opacity: 0.75;
+    transition: opacity var(--ease-fast) var(--ease-out);
+
+    &:hover {
+      opacity: 1;
+      color: var(--signal);
+    }
+  }
+
+  span[aria-hidden] {
+    opacity: 0.4;
+  }
+}
+
+.phero__title {
+  margin-top: var(--space-6);
+  font-size: clamp(2.25rem, 1.5rem + 3.4vw, 4rem);
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+}
+
+.phero__media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+
+  img {
+    width: 82%;
+    height: auto;
+    object-fit: contain;
+    // As fotos de origem são quentes (pores do sol alaranjados) e
+    // brigavam com a paleta. O duotone as traz para o petróleo/verde-água
+    // e troca junto com o tema.
+    filter: var(--duotone) drop-shadow(0 24px 60px rgba(5, 22, 28, 0.35));
+  }
+
+  @include below(desktop) {
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}
+
+// Anel tracejado em órbita — eco do logo, que é um globo de setas.
+.phero__ring {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 1px dashed var(--feature-accent);
+  opacity: 0.45;
+  animation: phero-orbit 52s linear infinite;
+}
+
+@keyframes phero-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phero__ring {
+    animation: none;
+  }
+}
+
+// ===================================================================
+//  Abertura
+// ===================================================================
+
+.intro {
+  background: var(--surface);
+  @include section-rhythm;
+}
+
+.intro__inner {
+  @include shell(1000px);
+}
+
+.intro__body {
+  margin-top: var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+
+  p {
+    color: var(--on-surface-muted);
+    max-width: 72ch;
+  }
+}
+
+// O primeiro parágrafo carrega o peso da página.
+.intro__lede {
+  font-size: var(--t-md);
+  color: var(--on-surface) !important;
+  line-height: 1.55;
+}
+
+// ===================================================================
+//  Sub-serviços (acordeão)
+// ===================================================================
+
+.offer {
+  background: var(--surface-sunken);
+  @include section-rhythm;
+}
+
+.offer__inner {
+  @include shell(1000px);
+}
+
+.offer__title {
+  font-size: var(--t-xl);
+  max-width: 34ch;
+  margin-bottom: var(--space-10);
+}
+
+.offer__list {
+  border-top: 1px solid var(--hairline);
+}
+
+.acc {
+  border-bottom: 1px solid var(--hairline);
+
+  &[open] .acc__icon {
+    transform: rotate(45deg);
+    background: var(--signal);
+    color: var(--on-signal);
+    border-color: var(--signal);
+  }
+
+  &[open] .acc__label {
+    color: var(--c-teal);
+  }
+}
+
+.acc__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--ease-fast) var(--ease-out);
+
+  // Remove o triângulo nativo nos dois motores.
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover .acc__label {
+    color: var(--c-teal);
+  }
+}
+
+.acc__index {
+  color: var(--c-teal);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.acc__label {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: var(--t-md);
+  line-height: 1.3;
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
+  transition: color var(--ease-fast) var(--ease-out);
+}
+
+.acc__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  border: 1px solid var(--hairline);
+  color: var(--c-teal);
+  transition:
+    transform var(--ease-dur) var(--ease-out),
+    background var(--ease-fast) var(--ease-out),
+    border-color var(--ease-fast) var(--ease-out),
+    color var(--ease-fast) var(--ease-out);
+}
+
+.acc__body {
+  padding: 0 0 var(--space-7) calc(var(--space-5) + 1.9rem);
+  animation: acc-open var(--ease-dur) var(--ease-out);
+
+  p {
+    font-size: var(--t-sm);
+    color: var(--on-surface-muted);
+    max-width: 68ch;
+  }
+}
+
+@keyframes acc-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.offer__footnote {
+  margin-top: var(--space-8);
+  padding-left: var(--space-5);
+  border-left: 2px solid var(--c-teal);
+  font-size: var(--t-sm);
+  color: var(--on-surface-muted);
+  max-width: 68ch;
+}
+
+// ===================================================================
+//  Suporte
+// ===================================================================
+
+// Continua a superfície da abertura: o texto de suporte é a ponte para a
+// lista, então uma régua fina separa melhor que uma troca de fundo.
+.support {
+  background: var(--surface);
+  padding-bottom: var(--space-16);
+}
+
+.support__inner {
+  @include shell(1000px);
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--hairline);
+}
+
+.support__title {
+  font-size: var(--t-xl);
+  margin-bottom: var(--space-6);
+}
+
+.support__body {
+  display: grid;
+  gap: var(--space-5);
+
+  p {
+    color: var(--on-surface-muted);
+    max-width: 72ch;
+  }
+}

@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { ContatoContentComponent } from '../../components/contato-content/contato-content.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ServiceLayoutComponent } from '../../components/service-layout/service-layout.component';
+import { ServicePageConfig } from '../../components/service-layout/service-layout.model';
 
 @Component({
   selector: 'app-frete-maritimo',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    RouterModule, CommonModule, FooterComponent, ContatoContentComponent,
-    TranslateModule
-  ],
-  templateUrl: './frete-maritimo.component.html',
-  styleUrl: './frete-maritimo.component.scss'
+  imports: [ServiceLayoutComponent],
+  template: '<app-service-layout [config]="config" />',
 })
 export class FreteMaritimoComponent {
-
+  readonly config: ServicePageConfig = {
+    key: 'freteMaritimo',
+    navKey: 'navigation.freteMaritimo',
+    descriptionCount: 2,
+    image: 'website-images/images-fr-marit/navio-IA-circle.png',
+    imageAlt: 'Navio porta-contêineres',
+    listTitleKey: 'servicesTitle',
+    items: ['lcl', 'fcl', 'doorToDoor', 'projectCargo', 'roro', 'breakBulk'],
+  };
 }

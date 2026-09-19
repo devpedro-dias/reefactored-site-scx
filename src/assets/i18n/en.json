@@ -1,4 +1,16 @@
 {
+  "brand": {
+    "name": "SCX Agenciamentos Marítimos",
+    "tagline": "Freight Forwarding"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "primaryNav": "Primary navigation",
+    "toggleMenu": "Open or close the menu",
+    "language": "Select language",
+    "themeToDark": "Switch to dark theme",
+    "themeToLight": "Switch to light theme"
+  },
   "common": {
     "home": "Home",
     "contact": "Contact",
@@ -18,7 +30,9 @@
     "contato": "Contact"
   },
   "cotacao": {
-    "title": "Exchange rate for"
+    "title": "Exchange rate for",
+    "subtitle": "Reference exchange rates",
+    "note": "Reference rates, updated on the last business day."
   },
   "home": {
     "title": "Logistics Services",
@@ -32,6 +46,29 @@
       "description2": "SCX AGENCY covers all major global airports, providing quality services and competitive values. We maintain partnerships with several qualified companies committed to providing safe, efficient and timely services worldwide.",
       "description3": "If you are interested in our rates, request a quote. We will respond within 24 hours. Be aware that we also offer solutions for your best logistics.",
       "cta": "Contact Us"
+    },
+    "hero": {
+      "eyebrow": "International trade since 2013",
+      "titleLead": "Global connectivity,",
+      "titleAccent": "logistics agility.",
+      "portsLabel": "Major ports of global trade"
+    },
+    "services": {
+      "eyebrow": "What we do"
+    },
+    "serviceBlurb": {
+      "freteMaritimo": "FCL, LCL, Break Bulk, Ro-Ro and project cargo, with competitive rates and fast transit times.",
+      "freteAereo": "Scheduled consolidation, door-to-door and charter for urgent, perishable and pharmaceutical cargo.",
+      "transporteRodoviario": "Pickup, transport and distribution across Brazil, with satellite tracking.",
+      "desembaracoAduaneiro": "NCM tariff classification, special regimes, LPCO and DUIMP/DU-E filing.",
+      "seguroCarga": "Coverage for loss and damage across sea, air, road and inland waterway transport."
+    },
+    "about": {
+      "eyebrow": "About SCX",
+      "title": "One integrated operation, from booking to delivery"
+    },
+    "cta": {
+      "eyebrow": "Talk to SCX"
     }
   },
   "contact": {
@@ -59,7 +96,12 @@
         "subject": "Enter subject",
         "message": "Enter your message"
       }
-    }
+    },
+    "eyebrow": "Talk to SCX",
+    "directTitle": "Direct contact",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "responseNote": "We reply within 24 business hours."
   },
   "contatoContent": {
     "title": "Contact our team",
@@ -206,6 +248,9 @@
       "description1": "Cargo insurance has as its main objective to provide peace of mind during the transport of goods. It is intended for the owner (shipper) of goods transported in their vehicles or delivered to third parties (self-employed or carriers), whether by sea, air, land or waterway. This insurance covers losses or damages suffered by goods during transport, guaranteeing the security of assets.",
       "description2": "This insurance is especially important for importers and exporters of goods between Brazil and abroad. Regardless of the means of transport used – maritime, air, land or waterway - the insurance offers coverage adapted to the sales conditions established between the importer and exporter. Coverage may include costs such as FOB (Free on Board), freight, various expenses, expected profits and taxes (II, IPI and ICMS).",
       "description3": "Taking out cargo insurance is an essential measure to minimize risks and ensure that any losses or damages are financially compensated. By guaranteeing the protection of goods, insurance contributes to stability and confidence in foreign trade operations."
-    }
+    },
+    "backToHome": "Back to home",
+    "overview": "Overview",
+    "whatWeOffer": "What we offer"
   }
 }

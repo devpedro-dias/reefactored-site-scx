@@ -5,18 +5,34 @@
   <title>SCX Agenciamentos Marítimos</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SCX Agenciamentos Marítimos — frete marítimo, aéreo e rodoviário, desembaraço aduaneiro e seguro de carga. Parceiro estratégico no comércio exterior desde 2013.">
+  <meta name="theme-color" content="#05161c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SCX Agenciamentos Marítimos">
+  <meta property="og:title" content="SCX Agenciamentos Marítimos">
+  <meta property="og:description" content="Conectividade global e agilidade logística: frete marítimo, aéreo e rodoviário, desembaraço aduaneiro e seguro de carga.">
+  <meta property="og:image" content="assets/website-images/images-home/ship-home-1920x700.png">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
-  <link
-    rel="preload"
-    as="image"
-    href="assets/website-images/images-home/ship-home-1920x700.png"
-    imagesrcset="assets/website-images/images-home/container500x500.png 500w, assets/website-images/images-home/navio-frente-1024x576.png 1024w, assets/website-images/images-home/ship-home-1920x700.png 1920w"
-    imagesizes="100vw"
-    fetchpriority="high"
-  >
-  <link rel="icon" type="image/x-icon" href="./assets/website-images/logo-scx.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Archivo:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+  <link rel="icon" type="image/png" href="assets/website-images/logo-scx.png">
+
+  <!-- Tema antes da primeira pintura. Sem isto o site carrega claro e
+       "pisca" para escuro quando o Angular sobe, em toda navegação. -->
+  <script>
+    (function () {
+      var theme = 'light';
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') theme = saved;
+      } catch (e) {}
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

@@ -1,0 +1,99 @@
+@use "../../variables.scss" as *;
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.globe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+
+  // O globo é escuro nos dois temas, então o halo é sempre o shader de
+  // fresnel da cena — não há variante clara a compensar aqui.
+
+  &.is-grabbing {
+    cursor: grabbing;
+  }
+
+  &.is-fallback {
+    cursor: default;
+  }
+
+  // O canvas entra com fade: a cena aparece montada, nunca pela metade.
+  ::ng-deep .globe__canvas {
+    position: relative;
+    z-index: 1;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0;
+    transition: opacity 900ms var(--ease-out);
+  }
+
+  &.is-ready ::ng-deep .globe__canvas {
+    opacity: 1;
+  }
+}
+
+// -------------------------------------------------------------------
+//  Arte estática — mobile e movimento reduzido
+// -------------------------------------------------------------------
+
+.globe__static {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  img {
+    width: min(78%, 420px);
+    height: auto;
+    border-radius: 50%;
+    opacity: 0.9;
+    // Duotone escuro fixo: a arte estática precisa casar com o globo 3D,
+    // que é escuro nos dois temas.
+    filter: url("#scx-duotone-dark");
+    box-shadow:
+      0 0 0 1px rgba(124, 196, 180, 0.22),
+      0 0 80px rgba(49, 133, 155, 0.35);
+  }
+}
+
+.globe__orbit {
+  position: absolute;
+  border-radius: 50%;
+  // Cores fixas, não do tema: os anéis orbitam a arte escura.
+  border: 1px solid rgba(124, 196, 180, 0.45);
+  opacity: 0.6;
+  pointer-events: none;
+
+  &--a {
+    width: min(94%, 510px);
+    aspect-ratio: 1;
+    border-style: dashed;
+    animation: globe-spin 46s linear infinite;
+  }
+
+  &--b {
+    width: min(86%, 468px);
+    aspect-ratio: 1;
+    border-color: rgba(70, 167, 192, 0.4);
+    animation: globe-spin 32s linear infinite reverse;
+  }
+}
+
+@keyframes globe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .globe__orbit {
+    animation: none;
+  }
+}

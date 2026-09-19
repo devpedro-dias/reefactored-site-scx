@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsComponent } from '../../components/forms/forms.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { HeaderComponent } from '../../components/header/header.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { FormsComponent } from '../../components/forms/forms.component';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-contato',
   standalone: true,
   imports: [
+    CommonModule,
+    TranslateModule,
     HeaderComponent,
-    RouterModule, FormsComponent,
-    ReactiveFormsModule, CommonModule, FooterComponent,
-    TranslateModule
+    FooterComponent,
+    FormsComponent,
+    RevealDirective,
   ],
   templateUrl: './contato.component.html',
-  styleUrl: './contato.component.scss'
+  styleUrl: './contato.component.scss',
 })
-export class ContatoComponent {
-
-}
+export class ContatoComponent {}

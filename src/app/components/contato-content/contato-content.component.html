@@ -1,11 +1,16 @@
-<section class="contatoContent">
-    <div class="maxWidth">
-        
-        <div class="contatoContainer">
-            <h2>{{ 'contatoContent.title' | translate }}</h2>
-            <p>{{ 'contatoContent.description' | translate }}</p>
-                
-                <a routerLink="/contato" routerLinkActive="active" class="cta">{{ 'contatoContent.cta' | translate }}</a>
-        </div>
+<section class="band u-feature">
+  <div class="band__inner" appReveal>
+    <div class="band__copy">
+      <p class="u-eyebrow">{{ 'home.cta.eyebrow' | translate }}</p>
+      <h2 class="band__title">{{ 'contatoContent.title' | translate }}</h2>
+      <p class="band__text">{{ 'contatoContent.description' | translate }}</p>
     </div>
+
+    <a routerLink="/contato" class="btn-signal band__cta">
+      {{ 'contatoContent.cta' | translate }}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
 </section>

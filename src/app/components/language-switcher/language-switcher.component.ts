@@ -14,9 +14,11 @@ export class LanguageSwitcherComponent {
   currentLang: string = 'pt';
   private platformId = inject(PLATFORM_ID);
   private document = inject(DOCUMENT);
+  // Sem bandeiras em emoji: no Windows elas viram as letras regionais
+  // ("BR", "US") e poluem o controle. O código do idioma basta.
   languages = [
-    { code: 'pt', name: 'PT', flag: '🇧🇷' },
-    { code: 'en', name: 'EN', flag: '🇺🇸' }
+    { code: 'pt', name: 'PT' },
+    { code: 'en', name: 'EN' },
   ];
 
   constructor(private translate: TranslateService) {

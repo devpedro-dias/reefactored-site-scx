@@ -1,22 +1,28 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { ContatoContentComponent } from '../../components/contato-content/contato-content.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ServiceLayoutComponent } from '../../components/service-layout/service-layout.component';
+import { ServicePageConfig } from '../../components/service-layout/service-layout.model';
 
 @Component({
   selector: 'app-frete-aereo',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    RouterModule, CommonModule, FooterComponent, ContatoContentComponent,
-    TranslateModule
-  ],
-  templateUrl: './frete-aereo.component.html',
-  styleUrl: './frete-aereo.component.scss'
+  imports: [ServiceLayoutComponent],
+  template: '<app-service-layout [config]="config" />',
 })
 export class FreteAereoComponent {
-
+  readonly config: ServicePageConfig = {
+    key: 'freteAereo',
+    navKey: 'navigation.freteAereo',
+    descriptionCount: 3,
+    image: 'website-images/images-fr-aereo/airplane-circle.png',
+    imageAlt: 'Aeronave cargueira',
+    listTitleKey: 'servicesTitle',
+    items: [
+      'doorToDoor',
+      'directConsolidated',
+      'dangerousGoods',
+      'perishableGoods',
+      'pharmaceutical',
+      'packaging',
+    ],
+  };
 }

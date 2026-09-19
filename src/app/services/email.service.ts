@@ -17,21 +17,13 @@ export interface EmailData {
 export class EmailService {
   constructor() {
     // EmailJS será inicializado automaticamente no primeiro uso
-    console.log('EmailService constructed');
   }
 
   sendEmail(data: EmailData): Observable<any> {
-    console.log('EmailService.sendEmail called with:', data);
-    console.log('Environment config:', {
-      publicKey: environment.emailjs.publicKey?.substring(0, 5) + '...',
-      serviceId: environment.emailjs.serviceId,
-      templateId: environment.emailjs.templateId,
-    });
-
-    // Inicializar EmailJS se ainda não foi inicializado
+    // Sem logs do payload aqui: `data` carrega e-mail e mensagem de quem
+    // preencheu o formulário, e isso ficava visível no console em produção.
     try {
       emailjs.init(environment.emailjs.publicKey);
-      console.log('EmailJS initialized');
     } catch (error) {
       console.warn('EmailJS init warning (may already be initialized):', error);
     }
@@ -44,8 +36,6 @@ export class EmailService {
       message: data.message,
     };
 
-    console.log('Template params:', templateParams);
-
     return from(
       emailjs
         .send(
@@ -53,10 +43,6 @@ export class EmailService {
           environment.emailjs.templateId,
           templateParams
         )
-        .then((response) => {
-          console.log('EmailJS send success:', response);
-          return response;
-        })
         .catch((error) => {
           console.error('EmailJS send error:', error);
           // Extrair mensagem de erro mais amigável

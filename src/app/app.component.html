@@ -1,1 +1,44 @@
 <router-outlet />
+
+<!--
+  Filtros duotone das fotografias.
+
+  As imagens de origem são quentes (pores do sol alaranjados) e brigavam
+  com a paleta petróleo/verde-água. O filtro achata a foto em luminância
+  e remapeia essa luminância para dois tons da marca — sombra e luz — o
+  que joga qualquer foto para dentro da paleta. O canal alfa não é
+  tocado, então os PNGs recortados seguem recortados.
+-->
+<svg class="duotone-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="scx-duotone-light" color-interpolation-filters="sRGB">
+      <feColorMatrix
+        type="matrix"
+        values="0.2126 0.7152 0.0722 0 0
+                0.2126 0.7152 0.0722 0 0
+                0.2126 0.7152 0.0722 0 0
+                0      0      0      1 0"
+      />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.063 0.902" />
+        <feFuncG type="table" tableValues="0.200 0.945" />
+        <feFuncB type="table" tableValues="0.239 0.929" />
+      </feComponentTransfer>
+    </filter>
+
+    <filter id="scx-duotone-dark" color-interpolation-filters="sRGB">
+      <feColorMatrix
+        type="matrix"
+        values="0.2126 0.7152 0.0722 0 0
+                0.2126 0.7152 0.0722 0 0
+                0.2126 0.7152 0.0722 0 0
+                0      0      0      1 0"
+      />
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0.016 0.561" />
+        <feFuncG type="table" tableValues="0.063 0.816" />
+        <feFuncB type="table" tableValues="0.094 0.753" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>

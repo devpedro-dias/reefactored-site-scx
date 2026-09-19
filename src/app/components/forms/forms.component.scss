@@ -1,267 +1,209 @@
 @use "../../variables.scss" as *;
 
-.formContainer {
-  width: 30vw;
-  margin: 0 auto;
+.frm {
+  display: grid;
+  gap: var(--space-6);
+}
 
-  @media (max-width: 768px) {
-    width: 80vw;
-  }
+.frm__row {
+  display: grid;
+  gap: var(--space-6);
 
-  @media (min-width: 769px) and (max-width: 1024px) {
-    width: 50vw;
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-form {
-  width: 100%;
-  margin: auto;
+// -------------------------------------------------------------------
+//  Campos
+// -------------------------------------------------------------------
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.field__label {
+  @include eyebrow;
   display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 3em;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--on-surface-muted);
+}
 
-  label {
-    color: $main-color;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    font-size: 1.1em;
-    font-weight: 600;
-    display: block;
+.field__counter {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--c-teal);
+  transition: color var(--ease-fast) var(--ease-out);
 
-    &:first-child {
-      margin-top: 0;
+  &.is-low {
+    color: var(--c-err);
+  }
+}
+
+.field__input {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  background: var(--surface-raised);
+  color: var(--on-surface);
+  font-size: var(--t-base);
+  transition:
+    border-color var(--ease-fast) var(--ease-out),
+    box-shadow var(--ease-fast) var(--ease-out),
+    background var(--ease-fast) var(--ease-out);
+
+  &::placeholder {
+    color: var(--c-steel);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--c-teal);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--c-teal);
+    box-shadow: 0 0 0 3px var(--signal-ring);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.is-invalid {
+    border-color: var(--c-err);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
     }
   }
 
-  input,
-  textarea {
-    padding: 1em 1.2em;
-    color: #333;
-    font-size: 1em;
-    border: 2px solid #e0e0e0;
-    outline: 0;
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    background: white;
-    font-family: inherit;
-    width: 100%;
-    box-sizing: border-box;
-
-    &::placeholder {
-      color: #999;
-      opacity: 0.7;
-    }
-
-    &:hover {
-      border-color: $main-color;
-    }
-  }
-
-  textarea {
-    height: 10em;
+  &--area {
     resize: vertical;
-    min-height: 120px;
-  }
-
-  input:focus,
-  textarea:focus {
-    border-color: $main-color;
-    box-shadow: 0 0 0 3px rgba($main-color, 0.1);
-    padding-left: 1.2em;
-  }
-
-  .flexContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2em;
-
-    button {
-      margin: 0;
-      background: linear-gradient(135deg, $main-color 0%, $accent-color 100%);
-      border: none;
-      cursor: pointer;
-      color: white;
-      padding: 1.2em 3em;
-      font-size: 1.1em;
-      font-weight: 600;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba($main-color, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      min-width: 200px;
-
-      &:hover:not(:disabled) {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba($main-color, 0.4);
-      }
-
-      &:active:not(:disabled) {
-        transform: translateY(0);
-      }
-
-      &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-      }
-    }
+    min-height: 160px;
+    line-height: 1.6;
   }
 }
 
-.popup-overlay {
+.field__error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--t-xs);
+  color: var(--c-err);
+  animation: field-err 240ms var(--ease-out);
+
+  &::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes field-err {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+
+// -------------------------------------------------------------------
+//  Envio
+// -------------------------------------------------------------------
+
+.frm__submit {
+  justify-self: start;
+  margin-top: var(--space-2);
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+}
+
+.frm__spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--on-signal);
+  animation: frm-spin 700ms linear infinite;
+}
+
+@keyframes frm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -------------------------------------------------------------------
+//  Aviso de envio
+// -------------------------------------------------------------------
+
+.toast-area {
   position: fixed;
-  bottom: 2em;
-  right: 2em;
-  z-index: 10000;
-  animation: slideUp 0.4s ease-out;
+  left: 50%;
+  bottom: var(--space-8);
+  transform: translateX(-50%);
+  z-index: 150;
+  pointer-events: none;
+  padding-inline: var(--space-4);
+}
 
-  &.hiding {
-    animation: slideDown 0.4s ease-out forwards;
-  }
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--r-full);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  color: var(--on-surface);
+  @include glass(true);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--sh-lg);
+  animation: toast-in 320ms var(--ease-out);
 
-  .popup-content {
-    position: relative;
-    background-color: white;
-    border-radius: 15px;
-    padding: 1em 1.5em;
-    max-width: 350px;
-    animation: slideUp 0.4s ease-out;
-
-    .successMessage {
-      color: #10b981;
-      margin: 0;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      font-size: 0.95em;
-
-      &::before {
-        content: "✓";
-        display: inline-block;
-        background: #10b981;
-        color: white;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        text-align: center;
-        line-height: 22px;
-        font-size: 0.85em;
-        font-weight: bold;
-        flex-shrink: 0;
-      }
-    }
-
-    .errorMessage {
-      color: #ef4444;
-      margin: 0;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-      font-size: 0.95em;
-
-      &::before {
-        content: "✕";
-        display: inline-block;
-        background: #ef4444;
-        color: white;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        text-align: center;
-        line-height: 22px;
-        font-size: 0.85em;
-        font-weight: bold;
-        flex-shrink: 0;
-      }
-    }
+  &.is-hiding {
+    animation: toast-out 380ms var(--ease-out) forwards;
   }
 }
 
-@keyframes slideUp {
+.toast__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  .toast--ok & {
+    background: var(--c-ok);
+    box-shadow: 0 0 10px var(--c-ok);
+  }
+
+  .toast--err & {
+    background: var(--c-err);
+    box-shadow: 0 0 10px var(--c-err);
+  }
+}
+
+@keyframes toast-in {
   from {
     opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(14px);
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes toast-out {
   to {
     opacity: 0;
-    transform: translateY(50px);
-  }
-}
-
-@media (max-width: 768px) {
-  .formContainer {
-    padding: 0;
-  }
-
-  form {
-    padding: 1.5em;
-    border-radius: 15px;
-
-    label {
-      font-size: 1em;
-      margin-top: 1.2em;
-    }
-
-    input,
-    textarea {
-      padding: 0.9em 1em;
-      font-size: 0.95em;
-    }
-
-    .flexContainer {
-      button {
-        padding: 1em 2em;
-        font-size: 1em;
-        width: 100%;
-      }
-    }
-  }
-
-  .popup-overlay {
-    bottom: 1em;
-    right: 1em;
-    left: 1em;
-
-    .popup-content {
-      padding: 1em 1.2em;
-      max-width: 100%;
-
-      .successMessage,
-      .errorMessage {
-        font-size: 0.9em;
-        gap: 0.4em;
-
-        &::before {
-          width: 20px;
-          height: 20px;
-          line-height: 20px;
-          font-size: 0.8em;
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  form {
-    padding: 2.5em;
+    transform: translateY(14px);
   }
 }

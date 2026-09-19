@@ -1,138 +1,161 @@
-<app-header></app-header>
-<main>
-    <section class="heroBanner">
-        <img
-            src="../../../assets/website-images/images-home/ship-home-1920x700.png"
-            srcset="../../../assets/website-images/images-home/container500x500.png 500w, ../../../assets/website-images/images-home/navio-frente-1024x576.png 1024w, ../../../assets/website-images/images-home/ship-home-1920x700.png 1920w"
-            sizes="100vw"
-            width="1920"
-            height="700"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-            alt="Navio de carga no mar"
-        >
-    </section>
+<app-header />
 
-    <section class="mainContent">
-        <div>
-            <section class="maxWidth">
-                <div class="content">
-                    <h1 class="title">{{ 'home.title' | translate }}</h1>
+<main id="conteudo">
+  <!-- ============================================================
+       Hero — o globo é o logo da SCX em movimento
+       ============================================================ -->
+  <section class="hero u-feature">
+    <div class="hero__glow" aria-hidden="true"></div>
 
-                    <div class="split">
-                        <div class="content-split">
-                            <p>{{ 'home.description' | translate }}</p>
-                        </div>
-                        <div class="content-cotacao">
-                            <app-cotacao></app-cotacao>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="u-eyebrow hero__eyebrow">{{ 'home.hero.eyebrow' | translate }}</p>
 
-            <section>
-            <div class="reversedColor">
-                <h1 class="title">{{ 'home.exploreServices' | translate }}</h1>
+        <h1 class="hero__title">
+          {{ 'home.hero.titleLead' | translate }}
+          <em>{{ 'home.hero.titleAccent' | translate }}</em>
+        </h1>
 
-                <div class="content">
-    
-                    <div class="rowIcons">
-                        <a routerLink="/frete-maritimo" class="btn">
-                            <article class="col col-sm-12 col-md-6 col-xl-3">
-                                
-                                <div class="icon"><img src="../../../assets/icons/ship.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone navio"/></div>
-                
-                                <h3>{{ 'navigation.freteMaritimo' | translate }}</h3>
-                                
-                            </article>
-                        </a>
+        <p class="hero__lede">{{ 'home.description' | translate }}</p>
 
-                        <a routerLink="/frete-aereo" class="btn">
-                            <article class="col col-sm-12 col-md-6 col-xl-3">
-                                
-                                <div class="icon"><img src="../../../assets/icons/airplane.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone avião"/></div>
-                
-                                <h3>{{ 'navigation.freteAereo' | translate }}</h3>
-                                
-                            </article>
-                        </a>
-
-                        <a routerLink="/transporte-rodoviario" class="btn">
-                            <article class="col col-sm-12 col-md-6 col-xl-3">
-                                
-                                <div class="icon"><img src="../../../assets/icons/truck.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone caminhão"/></div>
-                
-                                <h3>{{ 'navigation.transporteRodoviario' | translate }}</h3>
-                                
-                            </article>
-                        </a>
-                        <a routerLink="/desembaraco-aduaneiro" class="btn">
-                            <article class="col col-sm-12 col-md-6 col-xl-3">
-                                
-                                <div class="icon"><img src="../../../assets/icons/display.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone monitor"/></div>
-                
-                                <h3>{{ 'navigation.desembaracoAduaneiro' | translate }}</h3>
-                                
-                            </article>
-                         </a>
-                        
-                        
-
-                        <a routerLink="/seguro-carga" class="btn">
-                            <article class="col col-sm-12 col-md-6 col-xl-3">
-                                
-                                <div class="icon"><img src="../../../assets/icons/shield.svg" width="64" height="64" loading="lazy" decoding="async" alt="Ícone escudo"/></div>
-                                    
-                                <h3>{{ 'navigation.seguroCarga' | translate }}</h3>
-                                
-                            </article>
-                        </a>
-                    </div>
-                    <section class="mt-2">
-                        <div class="maxWidth flexContainer">
-                            <div class="content">
-                                <p>{{ 'home.servicesDescription1' | translate }}</p>
-        
-                                <p>{{ 'home.servicesDescription2' | translate }}</p>
-                                
-                            </div>
-        
-                            <div class="imageMainContent">
-                                <img
-                                    src="../../../assets/website-images/images-home/mapa-azul-circle.png"
-                                    srcset="../../../assets/website-images/images-home/mapa-azul-circle.png 2560w"
-                                    sizes="(max-width: 1000px) 100vw, 40vw"
-                                    width="2560"
-                                    height="2560"
-                                    loading="lazy"
-                                    decoding="async"
-                                    alt="Mapa com destaque global"
-                                >
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </section>
-            <section>
-                    <div class="maxWidth">
-                        <div class="contatoContent">
-                            <div class="contatoContainer">
-                                <h1 class="title">{{ 'home.contactCTA.title' | translate }}</h1>
-                                
-                                <p>{{ 'home.contactCTA.description1' | translate }}</p>
-
-                                <p>{{ 'home.contactCTA.description2' | translate }}</p>
-
-                                <p>{{ 'home.contactCTA.description3' | translate }}</p>
-
-                                <a routerLink="/contato" class="cta">{{ 'home.contactCTA.cta' | translate }}</a>
-                            </div>
-                        </div>
-                    </div>
-            </section>
+        <div class="hero__actions">
+          <a routerLink="/contato" class="btn-signal">
+            {{ 'home.contactCTA.cta' | translate }}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#servicos" class="btn-ghost">{{ 'home.exploreServices' | translate }}</a>
         </div>
-    </section>
+      </div>
+
+      <div class="hero__globe">
+        <app-globe />
+      </div>
+    </div>
+
+    <!-- Ticker de portos: dá escala global sem precisar afirmar números -->
+    <div class="ticker" aria-hidden="true">
+      <span class="ticker__label">{{ 'home.hero.portsLabel' | translate }}</span>
+      <div class="ticker__viewport">
+        <div class="ticker__track">
+          @for (port of tickerTrack; track $index) {
+            <span class="ticker__item">
+              <b>{{ port.code }}</b>
+              {{ port.city }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Cotação do dia — dado real, tratado como painel de instrumentos.
+       Vem logo após o hero: é a informação mais perecível da página e
+       encadeia com o ticker de portos que fecha o hero.
+       ============================================================ -->
+  <section class="rates" appReveal>
+    <div class="rates__inner">
+      <app-cotacao />
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Serviços — grade editorial numerada
+       ============================================================ -->
+  <section id="servicos" class="services">
+    <div class="services__inner">
+      <header class="services__head" appReveal>
+        <p class="u-eyebrow">{{ 'home.services.eyebrow' | translate }}</p>
+        <h2>{{ 'home.exploreServices' | translate }}</h2>
+      </header>
+
+      <ul class="services__grid" role="list">
+        @for (service of services; track service.path; let i = $index) {
+          <li class="services__cell" [appReveal]="i * 70">
+            <a [routerLink]="service.path" class="card">
+              <span class="card__index u-mono">{{ indexLabel(i) }}</span>
+
+              <span class="card__icon">
+                <img
+                  [src]="'assets/icons/' + service.icon + '.svg'"
+                  width="40"
+                  height="40"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+
+              <h3 class="card__title">{{ service.labelKey | translate }}</h3>
+              <p class="card__blurb">{{ service.blurbKey | translate }}</p>
+
+              <span class="card__go" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Sobre — texto editorial + imagem deslocada da grade
+       ============================================================ -->
+  <section class="about">
+    <div class="about__inner">
+      <div class="about__text" appReveal>
+        <p class="u-eyebrow">{{ 'home.about.eyebrow' | translate }}</p>
+        <h2 class="about__title">{{ 'home.about.title' | translate }}</h2>
+        <p>{{ 'home.servicesDescription1' | translate }}</p>
+        <p>{{ 'home.servicesDescription2' | translate }}</p>
+      </div>
+
+      <figure class="about__media" [appReveal]="120">
+        <img
+          src="assets/website-images/images-home/container.jpg"
+          srcset="
+            assets/website-images/images-home/container500x500.png 500w,
+            assets/website-images/images-home/container800.png     800w,
+            assets/website-images/images-home/container1200.png   1200w
+          "
+          sizes="(max-width: 1023px) 92vw, 44vw"
+          width="1200"
+          height="900"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA final
+       ============================================================ -->
+  <section class="cta u-feature">
+    <div class="cta__inner" appReveal>
+      <p class="u-eyebrow">{{ 'home.cta.eyebrow' | translate }}</p>
+      <h2 class="cta__title">{{ 'home.contactCTA.title' | translate }}</h2>
+
+      <div class="cta__body">
+        <p>{{ 'home.contactCTA.description1' | translate }}</p>
+        <p>{{ 'home.contactCTA.description2' | translate }}</p>
+        <p>{{ 'home.contactCTA.description3' | translate }}</p>
+      </div>
+
+      <a routerLink="/contato" class="btn-signal">
+        {{ 'home.contactCTA.cta' | translate }}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 </main>
-<app-footer></app-footer>
+
+<app-footer />

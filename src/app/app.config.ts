@@ -3,6 +3,13 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+// DatePipe e CurrencyPipe recebem 'pt-BR' explicitamente na cotação.
+// Só en-US vem embutido no Angular, então o pt precisa ser registrado
+// aqui — sem isso os pipes lançam "Missing locale data" em runtime.
+registerLocaleData(localePt, 'pt-BR');
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 

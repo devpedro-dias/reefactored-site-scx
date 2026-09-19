@@ -1,0 +1,25 @@
+<button
+  type="button"
+  class="tt"
+  [class.is-dark]="isDark()"
+  [attr.aria-label]="labelKey() | translate"
+  [attr.aria-pressed]="isDark()"
+  [title]="labelKey() | translate"
+  (click)="toggle()"
+>
+  <span class="tt__track" aria-hidden="true">
+    <!-- Sol e lua ficam ambos na trilha; a pastilha revela um de cada vez. -->
+    <svg class="tt__icon tt__icon--sun" width="13" height="13" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.9"/>
+      <path d="M12 2.4v2.2M12 19.4v2.2M4.2 12H2M22 12h-2.2M5.9 5.9L4.4 4.4M19.6 19.6l-1.5-1.5M18.1 5.9l1.5-1.5M4.4 19.6l1.5-1.5"
+            stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+    </svg>
+
+    <svg class="tt__icon tt__icon--moon" width="13" height="13" viewBox="0 0 24 24" fill="none">
+      <path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"
+            stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="tt__thumb"></span>
+  </span>
+</button>

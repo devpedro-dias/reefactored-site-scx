@@ -1,81 +1,109 @@
-<div [formGroup]="form" class="formContainer">
-  <form (ngSubmit)="send($event)" class="form">
-    <label for="name" class="fieldset_label">{{
-      "contact.form.company" | translate
-    }}</label>
-    <input
-      formControlName="from_name"
-      type="text"
-      name="name"
-      id="name"
-      [placeholder]="'contact.form.placeholder.company' | translate"
-      required
-      autocomplete="off"
-      class="fieldset_input"
-    />
+<form [formGroup]="form" (ngSubmit)="send($event)" class="frm" novalidate>
+  <div class="frm__row">
+    <div class="field">
+      <label for="name" class="field__label">{{ 'contact.form.company' | translate }}</label>
+      <input
+        formControlName="from_name"
+        type="text"
+        id="name"
+        name="name"
+        autocomplete="organization"
+        class="field__input"
+        [class.is-invalid]="showError('from_name')"
+        [attr.aria-invalid]="showError('from_name')"
+        [attr.aria-describedby]="showError('from_name') ? 'err-name' : null"
+        [placeholder]="'contact.form.placeholder.company' | translate"
+      />
+      @if (showError('from_name')) {
+        <p class="field__error" id="err-name">{{ errorKey('from_name') | translate }}</p>
+      }
+    </div>
 
-    <label for="email" class="fieldset_label">{{
-      "contact.form.email" | translate
-    }}</label>
-    <input
-      formControlName="from_email"
-      type="email"
-      name="email"
-      id="email"
-      [placeholder]="'contact.form.placeholder.email' | translate"
-      class="fieldset_input"
-      required
-    />
+    <div class="field">
+      <label for="email" class="field__label">{{ 'contact.form.email' | translate }}</label>
+      <input
+        formControlName="from_email"
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        class="field__input"
+        [class.is-invalid]="showError('from_email')"
+        [attr.aria-invalid]="showError('from_email')"
+        [attr.aria-describedby]="showError('from_email') ? 'err-email' : null"
+        [placeholder]="'contact.form.placeholder.email' | translate"
+      />
+      @if (showError('from_email')) {
+        <p class="field__error" id="err-email">{{ errorKey('from_email') | translate }}</p>
+      }
+    </div>
+  </div>
 
-    <label for="subject" class="fieldset_label">{{
-      "contact.form.subject" | translate
-    }}</label>
+  <div class="field">
+    <label for="subject" class="field__label">{{ 'contact.form.subject' | translate }}</label>
     <input
       formControlName="subject"
       type="text"
-      name="subject"
       id="subject"
+      name="subject"
       autocomplete="off"
-      class="fieldset_input"
+      class="field__input"
+      [class.is-invalid]="showError('subject')"
+      [attr.aria-invalid]="showError('subject')"
+      [attr.aria-describedby]="showError('subject') ? 'err-subject' : null"
       [placeholder]="'contact.form.placeholder.subject' | translate"
-      required
     />
+    @if (showError('subject')) {
+      <p class="field__error" id="err-subject">{{ errorKey('subject') | translate }}</p>
+    }
+  </div>
 
-    <label for="message" class="fieldset_label">{{
-      "contact.form.message" | translate
-    }}</label>
+  <div class="field">
+    <label for="message" class="field__label">
+      {{ 'contact.form.message' | translate }}
+      <span class="field__counter" [class.is-low]="messageRemaining < 50">{{ messageRemaining }}</span>
+    </label>
     <textarea
       formControlName="message"
-      type="text"
-      name="message"
       id="message"
+      name="message"
       maxlength="500"
+      rows="7"
+      class="field__input field__input--area"
+      [class.is-invalid]="showError('message')"
+      [attr.aria-invalid]="showError('message')"
+      [attr.aria-describedby]="showError('message') ? 'err-message' : null"
       [placeholder]="'contact.form.placeholder.message' | translate"
-      required
-      rows="6"
     ></textarea>
-
-    <div class="flexContainer">
-      <button type="button" (click)="send()">
-        <span *ngIf="!isSubmitting">{{
-          "contact.form.sendMessage" | translate
-        }}</span>
-        <span *ngIf="isSubmitting">{{ "common.loading" | translate }}</span>
-      </button>
-    </div>
-  </form>
-  <div
-    *ngIf="successMessage || errorMessage"
-    class="popup-overlay"
-    [class.hiding]="isHiding"
-  >
-    <div class="popup-content">
-      <div *ngIf="successMessage" class="successMessage">
-        {{ successMessage }}
-      </div>
-      <div *ngIf="errorMessage" class="errorMessage">
-        {{ errorMessage }}
-      </div>
-    </div>
+    @if (showError('message')) {
+      <p class="field__error" id="err-message">{{ errorKey('message') | translate }}</p>
+    }
   </div>
+
+  <button type="submit" class="btn-signal frm__submit" [disabled]="isSubmitting">
+    @if (isSubmitting) {
+      <span class="frm__spinner" aria-hidden="true"></span>
+      {{ 'common.loading' | translate }}
+    } @else {
+      {{ 'contact.form.sendMessage' | translate }}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    }
+  </button>
+</form>
+
+<!-- Retorno do envio. aria-live faz o leitor de tela anunciar sem roubar o foco. -->
+<div class="toast-area" role="status" aria-live="polite">
+  @if (successMessage || errorMessage) {
+    <div
+      class="toast"
+      [class.toast--ok]="successMessage"
+      [class.toast--err]="errorMessage"
+      [class.is-hiding]="isHiding"
+    >
+      <span class="toast__dot" aria-hidden="true"></span>
+      {{ successMessage || errorMessage }}
+    </div>
+  }
 </div>

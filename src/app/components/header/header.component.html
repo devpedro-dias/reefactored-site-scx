@@ -1,186 +1,133 @@
-<header>
-  <div class="top-header">
-    <button routerLink="" class="top-header-cta">
-      <div class="top-header-logo">
-        <img
-          ngSrc="../../assets/website-images/logo-redimensionada.png"
-          width="140"
-          height="140"
-          priority
-        />
-      </div>
-    </button>
-    <button routerLink="" class="top-header-cta">
-      <div class="flexTopHeader">
-        <h1 class="top-header-logo_name">
-          <span class="uppercase"
-            >SCX
+<a class="u-skip-link" href="#conteudo">{{ 'a11y.skipToContent' | translate }}</a>
 
-            <span class="uppercase">Agenciamentos Marítimos</span>
-          </span>
-        </h1>
-      </div>
-    </button>
+<header class="hdr" [class.is-condensed]="condensed()">
+  <div class="hdr__inner">
+    <a routerLink="/" class="brand" [attr.aria-label]="'brand.name' | translate">
+      <img
+        src="assets/website-images/logo-scx.png"
+        class="brand__mark"
+        width="44"
+        height="44"
+        alt=""
+      />
+      <span class="brand__text">
+        <span class="brand__name">SCX</span>
+        <span class="brand__sub">{{ 'brand.tagline' | translate }}</span>
+      </span>
+    </a>
 
-    <input type="checkbox" id="sidebar-active" />
-    <label for="sidebar-active" class="open-sidebar-button">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="32"
-        viewBox="0 -960 960 960"
-        width="32"
+    <nav class="nav" [attr.aria-label]="'a11y.primaryNav' | translate">
+      <ul class="nav__list" role="list">
+        <li>
+          <a
+            routerLink="/"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="is-active"
+            class="nav__link"
+            >{{ 'navigation.home' | translate }}</a
+          >
+        </li>
+
+        <li class="nav__dropdown" (focusout)="onServicesBlur($event)">
+          <button
+            type="button"
+            class="nav__link nav__trigger"
+            [class.is-open]="servicesOpen()"
+            [attr.aria-expanded]="servicesOpen()"
+            aria-haspopup="true"
+            (click)="toggleServices()"
+          >
+            {{ 'common.services' | translate }}
+            <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+              <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <div class="nav__panel" [class.is-open]="servicesOpen()">
+            <ul role="list">
+              @for (service of services; track service.path) {
+                <li>
+                  <a
+                    [routerLink]="service.path"
+                    routerLinkActive="is-active"
+                    class="nav__panel-link"
+                    >{{ service.labelKey | translate }}</a
+                  >
+                </li>
+              }
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a routerLink="/contato" routerLinkActive="is-active" class="nav__link">{{
+            'navigation.contato' | translate
+          }}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hdr__actions">
+      <app-theme-toggle />
+      <app-language-switcher />
+
+      <a routerLink="/contato" class="btn-signal btn-signal--sm hdr__cta">{{
+        'home.contactCTA.cta' | translate
+      }}</a>
+
+      <button
+        type="button"
+        class="burger"
+        [class.is-open]="drawerOpen()"
+        [attr.aria-expanded]="drawerOpen()"
+        [attr.aria-label]="'a11y.toggleMenu' | translate"
+        aria-controls="drawer"
+        (click)="toggleDrawer()"
       >
-        <path
-          d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
-        />
-      </svg>
-    </label>
-    <label id="overlay" for="sidebar-active"></label>
-    <div class="links-container">
-      <label for="sidebar-active" class="close-sidebar-button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="32"
-          viewBox="0 -960 960 960"
-          width="32"
-        >
-          <path
-            d=" m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56
-                            56-224-224-224 224Z"
-          />
-        </svg>
-      </label>
-
-      <div class="flexLinkContainer">
-        <div>
-          <nav role="navigation" class="primary-navigation">
-            <ul id="navbar">
-              <li class="li-inherit">
-                <a
-                  routerLink="/home"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.home" | translate }}</a
-                >
-              </li>
-              <li class="li-inherit">
-                <a
-                  routerLink="/frete-maritimo"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.freteMaritimo" | translate }}</a
-                >
-              </li>
-              <li class="li-inherit">
-                <a
-                  routerLink="/frete-aereo"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.freteAereo" | translate }}</a
-                >
-              </li>
-              <li class="li-inherit">
-                <a
-                  routerLink="/desembaraco-aduaneiro"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.desembaracoAduaneiro" | translate }}</a
-                >
-              </li>
-              <li class="li-inherit">
-                <a
-                  routerLink="/transporte-rodoviario"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.transporteRodoviario" | translate }}</a
-                >
-              </li>
-              <li class="li-inherit">
-                <a
-                  routerLink="/seguro-carga"
-                  routerLinkActive="active"
-                  class="btn btn-inherit"
-                  >{{ "navigation.seguroCarga" | translate }}</a
-                >
-              </li>
-              <li>
-                <a
-                  routerLink="/contato"
-                  routerLinkActive="active"
-                  class="btn"
-                  >{{ "navigation.contato" | translate }}</a
-                >
-              </li>
-              <li class="language-nav-item">
-                <app-language-switcher></app-language-switcher>
-              </li>
-            </ul>
-            <ul class="services">
-              <li>
-                <a routerLink="/home" routerLinkActive="active" class="btn">{{
-                  "navigation.home" | translate
-                }}</a>
-              </li>
-              <li>
-                <a class="btn">{{ "common.services" | translate }} &dtrif;</a>
-                <ul class="dropdown">
-                  <li>
-                    <a
-                      routerLink="/frete-maritimo"
-                      routerLinkActive="active"
-                      class="btn"
-                      >{{ "navigation.freteMaritimo" | translate }}</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      routerLink="/frete-aereo"
-                      routerLinkActive="active"
-                      class="btn"
-                      >{{ "navigation.freteAereo" | translate }}</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      routerLink="/desembaraco-aduaneiro"
-                      routerLinkActive="active"
-                      class="btn"
-                      >{{ "navigation.desembaracoAduaneiro" | translate }}</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      routerLink="/transporte-rodoviario"
-                      routerLinkActive="active"
-                      class="btn"
-                      >{{ "navigation.transporteRodoviario" | translate }}</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      routerLink="/seguro-carga"
-                      routerLinkActive="active"
-                      class="btn"
-                      >{{ "navigation.seguroCarga" | translate }}</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a
-                  routerLink="/contato"
-                  routerLinkActive="active"
-                  class="btn"
-                  >{{ "navigation.contato" | translate }}</a
-                >
-              </li>
-              <li class="language-nav-item">
-                <app-language-switcher></app-language-switcher>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- Drawer mobile -->
+<div
+  class="scrim"
+  [class.is-open]="drawerOpen()"
+  (click)="closeDrawer()"
+  aria-hidden="true"
+></div>
+
+<aside
+  id="drawer"
+  class="drawer"
+  [class.is-open]="drawerOpen()"
+  [attr.inert]="drawerOpen() ? null : ''"
+  [attr.aria-label]="'a11y.primaryNav' | translate"
+>
+  <nav class="drawer__nav">
+    <a routerLink="/" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="is-active" class="drawer__link">
+      {{ 'navigation.home' | translate }}
+    </a>
+
+    <p class="drawer__label">{{ 'common.services' | translate }}</p>
+    @for (service of services; track service.path) {
+      <a [routerLink]="service.path" routerLinkActive="is-active" class="drawer__link drawer__link--sub">
+        {{ service.labelKey | translate }}
+      </a>
+    }
+
+    <a routerLink="/contato" routerLinkActive="is-active" class="drawer__link">
+      {{ 'navigation.contato' | translate }}
+    </a>
+  </nav>
+
+  <div class="drawer__foot">
+    <div class="drawer__controls">
+      <app-language-switcher />
+      <app-theme-toggle />
+    </div>
+    <a routerLink="/contato" class="btn-signal">{{ 'home.contactCTA.cta' | translate }}</a>
+  </div>
+</aside>

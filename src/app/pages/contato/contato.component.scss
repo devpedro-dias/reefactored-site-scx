@@ -1,92 +1,171 @@
 @use "../../variables.scss" as *;
 
-.backgroundImg {
-  background: linear-gradient(135deg, $accent-color 0%, $main-color 100%);
-  background-attachment: fixed;
-  padding: 4em 1em;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
+// -------------------------------------------------------------------
+//  Abertura escura
+// -------------------------------------------------------------------
+
+.ctt-top {
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(68% 80% at 76% 30%, var(--feature-glow), transparent 62%),
+    var(--feature-bg);
+  padding-top: calc(var(--header-h) + var(--space-14));
+  padding-bottom: var(--space-14);
+}
 
-  &::before {
+.ctt-top__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image: radial-gradient(var(--feature-grain) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(60% 70% at 66% 40%, #000, transparent 76%);
+  -webkit-mask-image: radial-gradient(60% 70% at 66% 40%, #000, transparent 76%);
+}
+
+.ctt-top__inner {
+  @include shell(1320px);
+  position: relative;
+  z-index: 1;
+}
+
+.ctt-top__title {
+  margin: var(--space-5) 0 var(--space-5);
+  font-size: clamp(2.25rem, 1.5rem + 3.4vw, 4rem);
+  letter-spacing: -0.03em;
+  max-width: 16ch;
+}
+
+.ctt-top__lede {
+  font-size: var(--t-md);
+  color: var(--on-feature-muted);
+  max-width: 62ch;
+}
+
+// -------------------------------------------------------------------
+//  Corpo
+// -------------------------------------------------------------------
+
+.ctt {
+  background: var(--surface-sunken);
+}
+
+.ctt__inner {
+  @include shell(1320px);
+  display: grid;
+  gap: var(--space-12);
+  padding-block: var(--space-16);
+
+  @include respond-to(desktop) {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-20);
+    padding-block: var(--space-20);
+    align-items: start;
+  }
+}
+
+.ctt__aside {
+  @include respond-to(desktop) {
+    position: sticky;
+    // Acompanha a rolagem do formulário longo sem colar no cabeçalho.
+    top: calc(var(--header-h) + var(--space-10));
+  }
+}
+
+.ctt__direct-title {
+  @include eyebrow;
+  font-family: var(--font-mono);
+  color: var(--c-teal);
+  margin-bottom: var(--space-5);
+}
+
+.ctt__line {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--hairline);
+  transition: padding-left var(--ease-fast) var(--ease-out);
+
+  &:hover {
+    padding-left: var(--space-3);
+
+    .ctt__line-value {
+      color: var(--c-teal);
+    }
+  }
+}
+
+.ctt__line-label {
+  color: var(--on-surface-muted);
+  opacity: 0.75;
+}
+
+.ctt__line-value {
+  font-size: var(--t-md);
+  font-weight: 500;
+  transition: color var(--ease-fast) var(--ease-out);
+  overflow-wrap: anywhere;
+}
+
+.ctt__note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  font-size: var(--t-sm);
+  color: var(--on-surface-muted);
+}
+
+// Ponto pulsante: sinaliza "estamos atendendo" sem prometer número algum.
+.ctt__pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-ok);
+  flex-shrink: 0;
+
+  &::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(../../../assets/website-images/logo-redimensionada.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 60vw;
-    opacity: 0.18;
-    z-index: 0;
-    transition: background-size 0.3s ease;
-  }
-
-  .maxWidth {
-    margin: auto;
-    max-width: 1200px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3em;
-  }
-
-  .title {
-    text-align: center;
-    color: white;
-    font-weight: 600;
-    font-size: 2.5em;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.5px;
-  }
-
-  p {
-    font-size: 1.2em;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.95);
-    margin: 0;
-    line-height: 1.8em;
-    font-weight: 300;
-    max-width: 700px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    inset: 0;
+    border-radius: 50%;
+    background: var(--c-ok);
+    animation: ctt-pulse 2.2s var(--ease-out) infinite;
   }
 }
 
-@media (max-width: 768px) {
-  .backgroundImg {
-    padding: 2em 1em;
-    min-height: auto;
-
-    &::before {
-      background-size: 120vw;
-    }
-
-    .title {
-      font-size: 2em;
-    }
-
-    p {
-      font-size: 1em;
-    }
-
-    .maxWidth {
-      gap: 2em;
-    }
+@keyframes ctt-pulse {
+  from {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(3);
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .backgroundImg {
-    &::before {
-      background-size: 80vw;
-    }
+@media (prefers-reduced-motion: reduce) {
+  .ctt__pulse::after {
+    animation: none;
+  }
+}
+
+// -------------------------------------------------------------------
+//  Cartão do formulário
+// -------------------------------------------------------------------
+
+.ctt__form {
+  padding: var(--space-8);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  box-shadow: var(--sh-md);
+
+  @include respond-to(tablet) {
+    padding: var(--space-10);
   }
 }

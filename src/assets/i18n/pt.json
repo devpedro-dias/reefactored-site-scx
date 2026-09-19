@@ -1,4 +1,16 @@
 {
+  "brand": {
+    "name": "SCX Agenciamentos Marítimos",
+    "tagline": "Agenciamentos Marítimos"
+  },
+  "a11y": {
+    "skipToContent": "Pular para o conteúdo",
+    "primaryNav": "Navegação principal",
+    "toggleMenu": "Abrir ou fechar o menu",
+    "language": "Selecionar idioma",
+    "themeToDark": "Mudar para o tema escuro",
+    "themeToLight": "Mudar para o tema claro"
+  },
   "common": {
     "home": "Home",
     "contact": "Contato",
@@ -18,7 +30,9 @@
     "contato": "Contato"
   },
   "cotacao": {
-    "title": "Cotação do dia"
+    "title": "Cotação do dia",
+    "subtitle": "Câmbio de referência",
+    "note": "Valores de referência, atualizados no último dia útil."
   },
   "home": {
     "title": "Serviços Logísticos",
@@ -32,6 +46,29 @@
       "description2": "A SCX AGENCIAMENTOS cobre todos os principais aeroportos globais, fornecendo serviços de qualidade e valores competitivos. Mantemos parcerias com várias companhias qualificadas e comprometidas em fornecer serviços seguros, eficientes e pontuais em todo mundo.",
       "description3": "Se você está interessado em nossa tarifa, solicite uma cotação. Responderemos em 24 horas. Esteja ciente de que também oferecemos soluções para sua melhor logística.",
       "cta": "Fale Conosco"
+    },
+    "hero": {
+      "eyebrow": "Comércio exterior desde 2013",
+      "titleLead": "Conectividade global,",
+      "titleAccent": "agilidade logística.",
+      "portsLabel": "Principais portos do comércio global"
+    },
+    "services": {
+      "eyebrow": "O que fazemos"
+    },
+    "serviceBlurb": {
+      "freteMaritimo": "FCL, LCL, Break Bulk, Ro-Ro e cargas de projeto, com tarifas competitivas e tempos de trânsito rápidos.",
+      "freteAereo": "Consolidação programada, porta a porta e fretamento para cargas urgentes, perecíveis e farmacêuticas.",
+      "transporteRodoviario": "Coleta, transporte e distribuição em todo o território nacional, com rastreamento via satélite.",
+      "desembaracoAduaneiro": "Classificação tarifária NCM, regimes especiais, LPCO e registro de DUIMP e DU-E.",
+      "seguroCarga": "Cobertura de perdas e danos no transporte marítimo, aéreo, terrestre e aquaviário."
+    },
+    "about": {
+      "eyebrow": "Sobre a SCX",
+      "title": "Uma operação integrada, do embarque à entrega"
+    },
+    "cta": {
+      "eyebrow": "Fale com a SCX"
     }
   },
   "contact": {
@@ -59,7 +96,12 @@
         "subject": "Digite o assunto",
         "message": "Digite sua mensagem"
       }
-    }
+    },
+    "eyebrow": "Fale com a SCX",
+    "directTitle": "Contato direto",
+    "phoneLabel": "Telefone",
+    "emailLabel": "E-mail",
+    "responseNote": "Respondemos em até 24 horas úteis."
   },
   "contatoContent": {
     "title": "Entre em contato com nosso time",
@@ -206,6 +248,9 @@
       "description1": "O seguro de carga tem como principal objetivo proporcionar tranquilidade durante o transporte de mercadorias. Ele é destinado ao proprietário (embarcador) das mercadorias transportadas em seus veículos ou entregues a terceiros (autônomos ou transportadoras), seja por via marítima, aérea, terrestre ou aquaviária. Este seguro cobre perdas ou danos sofridos pelas mercadorias durante o transporte, garantindo a segurança dos bens.",
       "description2": "Esse seguro é especialmente importante para importadores e exportadores de mercadorias entre o Brasil e o exterior. Independentemente do meio de transporte utilizado – marítimo, aéreo, terrestre ou aquaviário - o seguro oferece cobertura adaptada às condições de venda estabelecidas entre o importador e o exportador. As coberturas podem incluir custos como FOB (Free on Board), frete, despesas diversas, lucros esperados e impostos (II, IPI e ICMS).",
       "description3": "A contratação de um seguro de carga é uma medida essencial para minimizar riscos e assegurar que eventuais perdas ou danos sejam compensados financeiramente. Ao garantir a proteção das mercadorias, o seguro contribui para a estabilidade e confiança nas operações de comércio exterior."
-    }
+    },
+    "backToHome": "Voltar para a home",
+    "overview": "Visão geral",
+    "whatWeOffer": "O que oferecemos"
   }
 }

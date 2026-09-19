@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../../components/header/header.component';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { ContatoContentComponent } from '../../components/contato-content/contato-content.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { ServiceLayoutComponent } from '../../components/service-layout/service-layout.component';
+import { ServicePageConfig } from '../../components/service-layout/service-layout.model';
 
 @Component({
   selector: 'app-seguro-carga',
   standalone: true,
-  imports: [
-    HeaderComponent,
-    RouterModule, CommonModule, FooterComponent, ContatoContentComponent,
-    TranslateModule
-  ],
-  templateUrl: './seguro-carga.component.html',
-  styleUrl: './seguro-carga.component.scss'
+  imports: [ServiceLayoutComponent],
+  template: '<app-service-layout [config]="config" />',
 })
 export class SeguroCargaComponent {
-
+  // Única página sem lista de sub-serviços: são três parágrafos e a chamada.
+  readonly config: ServicePageConfig = {
+    key: 'seguroCarga',
+    navKey: 'navigation.seguroCarga',
+    descriptionCount: 3,
+    image: 'website-images/images-seguro-carga/insurance.png',
+    imageAlt: 'Seguro de carga',
+  };
 }

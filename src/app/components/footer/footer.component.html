@@ -1,181 +1,126 @@
-<footer>
-  <div class="maxWidth">
-    <div class="flexIconFooter">
-      <div class="flexContainer">
-        <h2>{{ "footer.navigation" | translate }}</h2>
-        <ul class="nav_footer">
-          <li class="nav_footer_li">
-            <a routerLink="/home">{{ "navigation.home" | translate }}</a>
+<footer class="ftr u-feature">
+  <div class="ftr__inner">
+    <div class="ftr__grid">
+      <!-- Marca + contato direto -->
+      <div class="ftr__brand">
+        <a routerLink="/" class="ftr__logo">
+          <img
+            src="assets/website-images/logo-scx.png"
+            width="52"
+            height="52"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+          <span>
+            <strong>SCX</strong>
+            <em>{{ 'brand.tagline' | translate }}</em>
+          </span>
+        </a>
+
+        <ul class="ftr__contact" role="list">
+          <li>
+            <a href="tel:+551333215574" class="ftr__contact-link">
+              <span class="u-mono">TEL</span>
+              (13) 3321-5574
+            </a>
           </li>
-          <li class="nav_footer_li">
-            <a routerLink="/frete-maritimo">{{
-              "navigation.freteMaritimo" | translate
-            }}</a>
-          </li>
-          <li class="nav_footer_li">
-            <a routerLink="/frete-aereo">{{ "navigation.freteAereo" | translate }}</a>
-          </li>
-          <li class="nav_footer_li">
-            <a routerLink="/transporte-rodoviario">{{
-              "navigation.transporteRodoviario" | translate
-            }}</a>
-          </li>
-          <li class="nav_footer_li">
-            <a routerLink="/desembaraco-aduaneiro">{{
-              "navigation.desembaracoAduaneiro" | translate
-            }}</a>
-          </li>
-          <li class="nav_footer_li">
-            <a routerLink="/seguro-carga">{{
-              "navigation.seguroCarga" | translate
-            }}</a>
-          </li>
-          <li class="nav_footer_li">
-            <a routerLink="/contato">{{ "navigation.contato" | translate }}</a>
+          <li>
+            <a href="mailto:scx@scxagenciamentos.com" class="ftr__contact-link">
+              <span class="u-mono">MAIL</span>
+              scx&commat;scxagenciamentos.com
+            </a>
           </li>
         </ul>
-      </div>
 
-      <div class="flexContainer">
-        <h2>{{ "footer.contact" | translate }}</h2>
-        <ul class="nav_footer">
-          <li class="nav_footer_li"><a>(13) 3321-5574</a></li>
-          <li class="nav_footer_li">
-            <a href="mailto:scx@scxagenciamentos.com"
-              >scx&commat;scxagenciamentos.com</a
-            >
-          </li>
-        </ul>
-      </div>
-
-      <div class="flexContainer">
-        <h2>{{ "footer.socialMedia" | translate }}</h2>
-        <ul class="nav_footer_icon">
-          <li class="nav_footer_li_icon">
+        <ul class="ftr__social" role="list">
+          <li>
             <a
               href="https://www.linkedin.com/in/scxagenciamentos-5a060b109?trk=nav_responsive_tab_profile/"
-              class="icon_footer icon-linkedin2"
               target="_blank"
-              ><svg
-                fill="#FFF"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"
-                ></path>
-                <path d="M2 12h6v18h-6v-18z"></path>
-                <path
-                  d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"
-                ></path></svg
-            ></a>
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                <path d="M12 12h5.535v2.837h0.079c0.77-1.381 2.655-2.837 5.464-2.837 5.842 0 6.922 3.637 6.922 8.367v9.633h-5.769v-8.54c0-2.037-0.042-4.657-3.001-4.657-3.005 0-3.463 2.218-3.463 4.509v8.688h-5.767v-18z"/>
+                <path d="M2 12h6v18h-6v-18z"/>
+                <path d="M8 7c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"/>
+              </svg>
+            </a>
           </li>
-          <li class="nav_footer_li_icon">
+          <li>
             <a
               href="https://www.facebook.com/SCXAGENCIAMENTOS/"
-              class="icon_footer icon-facebook"
               target="_blank"
-              ><svg
-                fill="#FFF"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"
-                ></path></svg
-            ></a>
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"/>
+              </svg>
+            </a>
           </li>
-          <li class="nav_footer_li_icon">
+          <li>
             <a
               href="https://www.twitter.com/SCXAGENCIAMENTO"
-              class="icon_footer icon-x"
               target="_blank"
-              ><svg
-                fill="#FFF"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-              >
-                <path
-                  d="M24.325 3h4.411l-9.636 11.013 11.336 14.987h-8.876l-6.952-9.089-7.955 9.089h-4.413l10.307-11.78-10.875-14.22h9.101l6.284 8.308zM22.777 26.36h2.444l-15.776-20.859h-2.623z"
-                ></path></svg
-            ></a>
+              rel="noopener noreferrer"
+              aria-label="X"
+            >
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                <path d="M24.325 3h4.411l-9.636 11.013 11.336 14.987h-8.876l-6.952-9.089-7.955 9.089h-4.413l10.307-11.78-10.875-14.22h9.101l6.284 8.308zM22.777 26.36h2.444l-15.776-20.859h-2.623z"/>
+              </svg>
+            </a>
           </li>
         </ul>
       </div>
 
-      <div class="flexContainer">
-        <h2>{{ "footer.additionalInfo" | translate }}</h2>
-        <ul class="nav_footer nav_footer-info">
-          <li class="nav_footer_li">
-            <a
-              href="https://portalunico.siscomex.gov.br/portal/"
-              class="nav_footer_li"
-              target="_blank"
-              >Portal Siscomex</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.bcb.gov.br/"
-              class="nav_footer_li"
-              target="_blank"
-              >Banco Central</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.gov.br/mdic/pt-br"
-              class="nav_footer_li"
-              target="_blank"
-              >Mdic</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.gov.br/receitafederal/pt-br"
-              class="nav_footer_li"
-              target="_blank"
-              >Receita Federal</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.gov.br/anvisa/pt-br"
-              class="nav_footer_li"
-              target="_blank"
-              >Anvisa</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.gov.br/agricultura/pt-br/assuntos/vigilancia-agropecuaria"
-              class="nav_footer_li"
-              target="_blank"
-              >Vigiagro</a
-            >
-          </li>
-          <li class="nav_footer_li">
-            <a
-              href="https://www.gov.br/pt-br/orgaos/instituto-nacional-de-metrologia-qualidade-e-tecnologia"
-              class="nav_footer_li"
-              target="_blank"
-              >Inmetro</a
-            >
-          </li>
+      <!-- Serviços -->
+      <div class="ftr__col">
+        <h2 class="ftr__heading">{{ 'common.services' | translate }}</h2>
+        <ul role="list">
+          @for (service of services; track service.path) {
+            <li><a [routerLink]="service.path">{{ service.labelKey | translate }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Navegação -->
+      <div class="ftr__col">
+        <h2 class="ftr__heading">{{ 'footer.navigation' | translate }}</h2>
+        <ul role="list">
+          <li><a routerLink="/">{{ 'navigation.home' | translate }}</a></li>
+          <li><a routerLink="/contato">{{ 'navigation.contato' | translate }}</a></li>
+        </ul>
+      </div>
+
+      <!-- Órgãos oficiais -->
+      <div class="ftr__col">
+        <h2 class="ftr__heading">{{ 'footer.additionalInfo' | translate }}</h2>
+        <ul role="list">
+          @for (link of officialLinks; track link.href) {
+            <li>
+              <a [href]="link.href" target="_blank" rel="noopener noreferrer">
+                {{ link.label }}
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M2 8L8 2M8 2H3.5M8 2v4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </li>
+          }
         </ul>
       </div>
     </div>
-    <div class="copy">
-      <p>{{ "footer.copyright" | translate }} &copy; 2013-2025</p>
+
+    <div class="ftr__bottom">
+      <p>{{ 'footer.copyright' | translate }} &copy; 2013&ndash;{{ year }} SCX Agenciamentos Marítimos</p>
     </div>
   </div>
+
+  <!-- Marca d'água: fecha a página com o nome, não com um rodapé mudo.
+       Em telas estreitas só "SCX" cabe sem virar um fio ilegível. -->
+  <span class="ftr__watermark" aria-hidden="true">
+    <span class="ftr__watermark-short">SCX</span>
+    <span class="ftr__watermark-full">SCX Agenciamentos</span>
+  </span>
 </footer>

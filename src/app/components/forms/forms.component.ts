@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -8,7 +9,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MensagemComponent } from '../mensagem/mensagem.component';
 import { EmailService } from '../../services/email.service';
 import { firstValueFrom } from 'rxjs';
 
@@ -19,7 +19,7 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './forms.component.html',
   styleUrl: './forms.component.scss',
 })
-export class FormsComponent {
+export class FormsComponent implements OnDestroy {
   form: FormGroup = this.fb.group({
     from_name: ['', [Validators.required]],
     to_name: 'SCX Agenciamentos Marítimos',
@@ -40,6 +40,7 @@ export class FormsComponent {
   isSubmitting: boolean = false;
   isHiding: boolean = false;
   private messageTimeout: any = null;
+  private hideTimeout: any = null;
 
   constructor(
     private fb: FormBuilder,
@@ -47,61 +48,100 @@ export class FormsComponent {
     private translate: TranslateService
   ) {}
 
+  ngOnDestroy(): void {
+    // Sem isso, os timers seguem vivos depois de sair da página.
+    clearTimeout(this.messageTimeout);
+    clearTimeout(this.hideTimeout);
+  }
+
+  // -----------------------------------------------------------------
+  //  Erros por campo
+  // -----------------------------------------------------------------
+
+  /** Só mostra erro depois que o campo foi tocado — não acusa antecipadamente. */
+  showError(name: string): boolean {
+    const control = this.form.get(name);
+    return !!control && control.invalid && (control.touched || control.dirty);
+  }
+
+  /** Mapeia o erro do campo para a chave i18n correspondente. */
+  errorKey(name: string): string {
+    const control = this.form.get(name);
+    if (!control?.errors) return '';
+
+    const map: Record<string, Record<string, string>> = {
+      from_name: { required: 'contact.form.companyRequired' },
+      from_email: {
+        required: 'contact.form.emailRequired',
+        email: 'contact.form.emailInvalid',
+      },
+      subject: { required: 'contact.form.subjectRequired' },
+      message: {
+        required: 'contact.form.messageRequired',
+        minlength: 'contact.form.messageMinLength',
+      },
+    };
+
+    const forField = map[name] ?? {};
+    const firstError = Object.keys(control.errors).find((key) => forField[key]);
+    return firstError ? forField[firstError] : 'contact.form.fillAll';
+  }
+
+  /** Caracteres restantes na mensagem, para o contador. */
+  get messageRemaining(): number {
+    const value = (this.form.get('message')?.value as string) ?? '';
+    return 500 - value.length;
+  }
+
+  // -----------------------------------------------------------------
+  //  Envio
+  // -----------------------------------------------------------------
+
   private clearMessages(): void {
     this.successMessage = '';
     this.errorMessage = '';
   }
 
   private setMessageTimeout(): void {
-    // Limpar timeout anterior se existir
-    if (this.messageTimeout) {
-      clearTimeout(this.messageTimeout);
-    }
-
-    // Resetar flag de hiding
+    clearTimeout(this.messageTimeout);
+    clearTimeout(this.hideTimeout);
     this.isHiding = false;
 
-    // Definir novo timeout para iniciar animação de saída após 3 segundos
     this.messageTimeout = setTimeout(() => {
-      // Iniciar animação de saída
       this.isHiding = true;
 
-      // Aguardar animação de saída terminar antes de limpar
-      setTimeout(() => {
+      this.hideTimeout = setTimeout(() => {
         this.clearMessages();
         this.isHiding = false;
         this.messageTimeout = null;
-      }, 400); // Tempo da animação de saída
-    }, 3000);
+      }, 400);
+    }, 4000);
+  }
+
+  private announce(key: string, kind: 'success' | 'error'): void {
+    this.translate.get(key).subscribe((text: string) => {
+      if (kind === 'success') {
+        this.successMessage = text;
+        this.errorMessage = '';
+      } else {
+        this.errorMessage = text;
+        this.successMessage = '';
+      }
+      this.setMessageTimeout();
+    });
   }
 
   async send(event?: Event) {
-    console.log('=== send() CALLED ===');
-    console.log('Event:', event);
-
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    console.log('Form state:', {
-      valid: this.form.valid,
-      invalid: this.form.invalid,
-      value: this.form.value,
-    });
-    console.log('Form valid:', this.form.valid);
-    console.log('Form value:', this.form.value);
-    console.log('Form errors:', this.getFormErrors());
-
-    // Marcar todos os campos como touched para mostrar erros
     Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].markAsTouched();
     });
 
     if (this.form.invalid) {
-      console.log('Form is invalid');
-
-      // Verificar qual campo está com erro
       const errors = this.getFormErrors();
       let errorKey = 'contact.form.fillAll';
 
@@ -119,74 +159,45 @@ export class FormsComponent {
         errorKey = 'contact.form.subjectRequired';
       }
 
-      this.translate.get(errorKey).subscribe((text: string) => {
-        this.errorMessage = text;
-        this.successMessage = '';
-        this.setMessageTimeout();
-      });
+      this.announce(errorKey, 'error');
       return;
     }
 
     this.isSubmitting = true;
-    this.successMessage = '';
-    this.errorMessage = '';
+    this.clearMessages();
 
-    // Desabilitar campos durante o envio
     Object.keys(this.form.controls).forEach((key) => {
       this.form.controls[key].disable();
     });
 
     try {
-      console.log('Sending email with data:', {
-        from_name: this.form.value.from_name,
-        from_email: this.form.value.from_email,
-        to_name: this.form.value.to_name,
-        subject: this.form.value.subject,
-        message: this.form.value.message,
-      });
+      // getRawValue(): os campos acabaram de ser desabilitados, e
+      // `form.value` omite controles desabilitados — enviaria vazio.
+      const raw = this.form.getRawValue();
 
-      const result = await firstValueFrom(
+      await firstValueFrom(
         this.emailService.sendEmail({
-          from_name: this.form.value.from_name,
-          from_email: this.form.value.from_email,
-          to_name: this.form.value.to_name,
-          subject: this.form.value.subject,
-          message: this.form.value.message,
+          from_name: raw.from_name,
+          from_email: raw.from_email,
+          to_name: raw.to_name,
+          subject: raw.subject,
+          message: raw.message,
         })
       );
 
-      console.log('Email sent successfully:', result);
-      this.translate.get('contact.form.success').subscribe((text: string) => {
-        this.successMessage = text;
-        this.errorMessage = '';
-        this.setMessageTimeout();
-      });
-      this.form.reset();
+      this.announce('contact.form.success', 'success');
+      this.form.reset({ to_name: 'SCX Agenciamentos Marítimos' });
     } catch (error: any) {
-      console.error('Error sending email:', error);
-
-      // Verificar se é erro de configuração do EmailJS (412)
-      if (
+      const isConfigError =
         error?.status === 412 ||
         error?.message?.includes('Invalid grant') ||
-        error?.message?.includes('Gmail')
-      ) {
-        this.translate
-          .get('contact.form.configError')
-          .subscribe((text: string) => {
-            this.errorMessage = text;
-            this.successMessage = '';
-            this.setMessageTimeout();
-          });
-      } else {
-        this.translate.get('contact.form.error').subscribe((text: string) => {
-          this.errorMessage = text;
-          this.successMessage = '';
-          this.setMessageTimeout();
-        });
-      }
+        error?.message?.includes('Gmail');
+
+      this.announce(
+        isConfigError ? 'contact.form.configError' : 'contact.form.error',
+        'error'
+      );
     } finally {
-      // Reabilitar campos após o envio
       Object.keys(this.form.controls).forEach((key) => {
         this.form.controls[key].enable();
       });
@@ -197,7 +208,7 @@ export class FormsComponent {
   private getFormErrors(): any {
     const errors: any = {};
     Object.keys(this.form.controls).forEach((key) => {
-      const control = this.form.controls[key];
+      const control: AbstractControl = this.form.controls[key];
       if (control.errors) {
         errors[key] = control.errors;
       }

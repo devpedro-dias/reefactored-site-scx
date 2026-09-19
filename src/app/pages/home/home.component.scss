@@ -1,269 +1,462 @@
 @use "../../variables.scss" as *;
 
-.heroBanner {
-  display: block;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-  width: 100%;
-  overflow: hidden;
+// ===================================================================
+//  Hero
+// ===================================================================
 
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
+.hero {
+  position: relative;
+  min-height: min(100svh, 920px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--header-h) + var(--space-10));
+  padding-bottom: var(--space-20);
+  overflow: hidden;
+  background:
+    radial-gradient(80% 60% at 78% 38%, var(--feature-glow), transparent 60%),
+    radial-gradient(60% 50% at 12% 88%, var(--feature-glow-soft), transparent 64%),
+    var(--feature-bg);
+}
+
+// Grão sutil: impede que os gradientes façam banding em telas grandes.
+.hero__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: radial-gradient(var(--feature-grain) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000, transparent 78%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000, transparent 78%);
+}
+
+.hero__inner {
+  @include shell(1320px);
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--space-12);
+  align-items: center;
+  grid-template-columns: 1fr;
+
+  @include respond-to(desktop) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+    gap: var(--space-8);
   }
 }
 
-.mainContent {
-    text-align: center;
-
-    .maxWidth {
-        max-width: 85%;
-        margin: 0 auto;
-    }
-
-    section, .content {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 2em;
-
-        .title {
-            color: $main-color;
-            margin: 1em 0;
-            font-weight: 400;
-            font-size: 1.8em;
-        }
-
-        p {
-            font-size: 1.2em;
-            text-align: justify;
-            color: $main-color;
-            margin-bottom: 1em;
-            line-height: 1.6em;
-            font-weight: 300;
-        }   
-    }
-
-    .reversedColor {
-        background: linear-gradient($main-color, $accent-color 70%);
-        color: white;
-
-        .title {
-            color: white;
-        }
-
-        .col {
-            flex: 1 0 auto;
-            width: 100%;
-            margin: 1em 0;
-        }
-          
-          .col-sm-12 {
-            width: 100%;
-        }
-
-        .icon {
-            font-size: 3.2em;
-            color: white;
-            text-shadow: 0 0 6px white;
-        }
-
-        h3 {
-            font-weight: 300;
-        }
-        
-        .btn {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            color: white;
-            text-decoration: none;
-        }
-
-        .content {
-            margin-top: 1em;
-            p {
-                color: white;
-                margin-bottom: 1em;
-            }
-
-        }
-
-        .imageMainContent {
-            width: 100%;
-            margin: 4em 0 auto;
-            display: flex;
-            justify-content: center;
-
-            img {
-                width: 100%;
-                max-width: 420px;
-                height: auto;
-                display: block;
-
-            }
-        }
-    
-        .rowIcons {
-            display: flex;
-            flex-direction: column;
-            
-        }
-
-        .mt-2 {
-            margin-top: 4em;
-        }
-    }
-
-    .contatoContent {
-
-        h2 {
-            color: $main-color;
-            margin: 1em 0;
-            font-weight: 400;
-        }
-
-        .cta {
-            background-color: $main-color;
-            border: none;
-            cursor: pointer;
-            color: white;
-            padding: 1em 1.4em;
-            font-size: 1em;
-            border-radius: 10px;
-            text-decoration: none;
-        }
-
-        .contatoContainer {
-            display: flex;
-            flex-direction: column;
-        
-            h2 {
-                color: $main-color;
-                margin: 2em 0;
-                font-weight: 400;
-                font-size: 2em;
-            }
-        
-            .cta {
-                width: fit-content;
-                background-color: $main-color;
-                border: none;
-                cursor: pointer;
-                color: white;
-                padding: 1em 1.4em;
-                font-size: 1em;
-                border-radius: 10px;
-                margin: 1em auto 4em;
-                text-decoration: none;
-            }
-        }
-        p {
-            font-size: 1.2em;
-            text-align: justify;
-            color: $main-color;
-            margin: 1em 0;
-            line-height: 1.6em;
-            font-weight: 300;
-        }  
-    
-    }
+.hero__copy > * {
+  // Entrada escalonada no carregamento — um gesto só, bem orquestrado.
+  animation: hero-in 900ms var(--ease-out) backwards;
 }
 
-@media screen and (min-width: 800px) {
-    .split {
-        display: flex;
-        gap: 6em;
-        justify-content: center;
-        align-items: center;
-        
-        .content-split {
-            max-width: 60%;
-        }
-    }
+.hero__eyebrow {
+  animation-delay: 80ms;
+  color: var(--feature-accent);
 }
 
-@media screen and (min-width:950px) {
-    .col-md-6 {
-        width: calc(50% - 1rem);
-    }
-    
-    .reversedColor {
+.hero__title {
+  // Escala própria: --t-4xl empurrava o título para quatro linhas e
+  // espremia a lede e os botões para fora da dobra.
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+  margin: var(--space-6) 0 var(--space-6);
+  animation-delay: 180ms;
+  letter-spacing: -0.032em;
 
-        .content {
-            max-width: 100%;
-            align-items: center;
-
-            .rowIcons {
-                justify-content: center;
-                flex-direction: row;
-                gap: 4em;
-                margin: 2em 0 6em;
-            }
-        }
-    }
-    
+  em {
+    display: block;
+    font-style: italic;
+    // O acento tipográfico da página: mais "wonky", mais leve, em verde-água.
+    font-variation-settings: "SOFT" 40, "WONK" 1, "opsz" 144;
+    color: var(--feature-accent);
+  }
 }
 
-@media(min-width: 1000px) {
-
-    
-    .col-xl-3 {
-        width: calc(25% - 1em);
-    }
-    
-      .col-xl-6 {
-        width: calc(50% - 1em);
-    }
-
-        
-    .flexContainer {
-        display: flex;
-    }
+.hero__lede {
+  max-width: 46ch;
+  font-size: var(--t-md);
+  color: var(--on-feature-muted);
+  animation-delay: 280ms;
 }
 
-@media(min-width: 1300px) {
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+  animation-delay: 380ms;
+}
 
-    .mainContent {
-        
-        section {
-            .reversedColor {
-        
-                .imageMainContent {
-                    width: 100%;
-                    margin: 0 0 auto;
-                    display: flex;
-                    justify-content: center;
-        
-                    img {
-                        width: 100%;
-                        max-width: 420px;
-                        height: auto;
-                        display: block;
-        
-                    }
-                }
-            }
-        }
+.hero__globe {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 620px;
+  margin-inline: auto;
+  animation: globe-in 1400ms var(--ease-out) 200ms backwards;
 
-        .reversedColor {
+  @include below(desktop) {
+    max-width: 440px;
+    order: -1;
+  }
 
-            .content {
-                max-width: 100%;
-                align-items: center;
-    
-                .rowIcons {
-                    justify-content: center;
-                    flex-direction: row;
-                    gap: 4em;
-                    margin: 2em 0 2em;
-                }
-            }
-        }
+  @include below(mobile) {
+    max-width: 320px;
+  }
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes globe-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+}
+
+// ===================================================================
+//  Ticker de portos
+// ===================================================================
+
+.ticker {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: var(--space-10);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  border-top: 1px solid var(--feature-hairline);
+  @include shell(1320px);
+  padding-bottom: 0;
+}
+
+// line-height 1 nos dois lados e nenhum padding assimétrico: é o que faz
+// o rótulo e os códigos dos portos caírem na mesma linha de base óptica.
+.ticker__label {
+  @include eyebrow;
+  line-height: 1;
+  color: var(--feature-accent);
+  flex-shrink: 0;
+
+  @include below(tablet) {
+    display: none;
+  }
+}
+
+.ticker__viewport {
+  overflow: hidden;
+  flex: 1;
+  padding-block: var(--space-4);
+  // Esmaece nas bordas: o fluxo parece contínuo, sem corte seco.
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.ticker__track {
+  display: flex;
+  gap: var(--space-8);
+  width: max-content;
+  animation: ticker-scroll 46s linear infinite;
+}
+
+.ticker__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--t-xs);
+  line-height: 1;
+  color: var(--on-feature-muted);
+  white-space: nowrap;
+
+  b {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--feature-accent);
+  }
+}
+
+@keyframes ticker-scroll {
+  to {
+    // A faixa contém duas passagens idênticas; -50% emenda sem salto.
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker__track {
+    animation: none;
+  }
+}
+
+// ===================================================================
+//  Serviços
+// ===================================================================
+
+.services {
+  background: var(--surface);
+  @include section-rhythm;
+}
+
+.services__inner {
+  @include shell(1320px);
+}
+
+.services__head {
+  margin-bottom: var(--space-12);
+
+  h2 {
+    margin-top: var(--space-4);
+    max-width: 16ch;
+  }
+}
+
+.services__grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: 1fr;
+
+  @include respond-to(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Seis colunas permitem 3+3 e depois 2+2+2: a grade quebra o ritmo
+  // de "cinco cartões iguais" sem perder o alinhamento.
+  @include respond-to(desktop) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.services__cell {
+  @include respond-to(desktop) {
+    grid-column: span 2;
+
+    &:nth-child(1),
+    &:nth-child(2) {
+      grid-column: span 3;
     }
-    
+  }
+}
+
+.card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  overflow: hidden;
+  transition:
+    transform var(--ease-dur) var(--ease-out),
+    border-color var(--ease-dur) var(--ease-out),
+    box-shadow var(--ease-dur) var(--ease-out);
+
+  // Lâmina de cor que sobe ao passar o mouse.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-teal), var(--c-seafoam));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--ease-dur) var(--ease-out);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-teal);
+    box-shadow: var(--sh-md);
+
+    &::before {
+      transform: scaleX(1);
+    }
+
+    .card__go {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .card__icon img {
+      transform: scale(1.08) rotate(-4deg);
+    }
+  }
+}
+
+.card__index {
+  color: var(--c-teal);
+  opacity: 0.55;
+  letter-spacing: 0.14em;
+}
+
+// Os SVGs de origem têm fill="#FFF" fixo — em card claro ficariam
+// invisíveis. O selo petróleo devolve o contraste sem tocar nos assets.
+.card__icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  margin: var(--space-8) 0 var(--space-5);
+  border-radius: var(--r-lg);
+  // O selo é sempre escuro nos dois temas: os SVGs de origem têm
+  // fill="#FFF" fixo e só existem sobre fundo escuro.
+  background: linear-gradient(145deg, var(--c-petrol), var(--c-abyss));
+  box-shadow: 0 6px 18px rgba(34, 92, 106, 0.28);
+
+  img {
+    width: 30px;
+    height: 30px;
+    transition: transform var(--ease-dur) var(--ease-out);
+  }
+}
+
+.card__title {
+  font-size: var(--t-lg);
+  margin-bottom: var(--space-3);
+}
+
+.card__blurb {
+  font-size: var(--t-sm);
+  color: var(--on-surface-muted);
+  max-width: 42ch;
+}
+
+.card__go {
+  position: absolute;
+  top: var(--space-7);
+  right: var(--space-7);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-full);
+  background: var(--signal);
+  color: var(--on-signal);
+  opacity: 0;
+  transform: translate(-6px, 6px);
+  transition:
+    opacity var(--ease-dur) var(--ease-out),
+    transform var(--ease-dur) var(--ease-out);
+}
+
+// ===================================================================
+//  Sobre
+// ===================================================================
+
+.about {
+  background: var(--surface-sunken);
+  @include section-rhythm;
+}
+
+.about__inner {
+  @include shell(1320px);
+  display: grid;
+  gap: var(--space-12);
+  align-items: center;
+  grid-template-columns: 1fr;
+
+  @include respond-to(desktop) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+.about__title {
+  margin: var(--space-4) 0 var(--space-6);
+  max-width: 18ch;
+}
+
+.about__text p + p {
+  margin-top: var(--space-5);
+}
+
+.about__text p:not(.u-eyebrow) {
+  color: var(--on-surface-muted);
+  max-width: 56ch;
+}
+
+.about__media {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--sh-lg);
+
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  // Véu petróleo: casa a fotografia com a paleta do site.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--feature-glow), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+// ===================================================================
+//  Cotação
+// ===================================================================
+
+.rates {
+  padding-block: var(--space-16);
+  background: var(--surface);
+}
+
+.rates__inner {
+  @include shell(1320px);
+}
+
+// ===================================================================
+//  CTA final
+// ===================================================================
+
+.cta {
+  background:
+    radial-gradient(70% 80% at 22% 18%, var(--feature-glow), transparent 62%),
+    var(--feature-bg);
+  @include section-rhythm;
+}
+
+.cta__inner {
+  @include shell(900px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .u-eyebrow {
+    color: var(--feature-accent);
+    justify-content: center;
+  }
+}
+
+.cta__title {
+  margin: var(--space-5) 0 var(--space-8);
+  max-width: 20ch;
+}
+
+.cta__body {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+
+  p {
+    font-size: var(--t-sm);
+    color: var(--on-feature-muted);
+    max-width: 68ch;
+  }
 }

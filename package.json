@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "0.0.0",
+  "name": "scx-website",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,11 +23,11 @@
     "@angular/platform-browser": "20.3.19",
     "@angular/platform-browser-dynamic": "20.3.19",
     "@angular/router": "20.3.19",
-
     "@emailjs/browser": "^4.4.1",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "rxjs": "~7.8.0",
+    "three": "^0.180.0",
     "tslib": "^2.7.0",
     "zone.js": "~0.15.0"
   },
@@ -36,6 +36,7 @@
     "@angular/cli": "20.3.25",
     "@angular/compiler-cli": "20.3.19",
     "@types/jasmine": "~5.1.0",
+    "@types/three": "^0.180.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -43,5 +44,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.0"
-  }
+  },
+  "description": "Site institucional da SCX Agenciamentos Maritimos"
 }
