@@ -90,22 +90,29 @@
   }
 }
 
+// A faixa de erro existe sempre, mesmo vazia. Antes ela era criada só
+// quando havia erro, e o aparecimento empurrava tudo abaixo — 28px por
+// campo, 83px acumulados até o botão. Reservar a altura elimina isso.
 .field__error {
+  min-height: 1.125rem;
+  font-size: var(--t-xs);
+  line-height: 1.125rem;
+  color: var(--c-err);
+}
+
+.field__error-msg {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: var(--t-xs);
-  color: var(--c-err);
   animation: field-err 240ms var(--ease-out);
+}
 
-  &::before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
-  }
+.field__error-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 @keyframes field-err {
@@ -122,6 +129,9 @@
 .frm__submit {
   justify-self: start;
   margin-top: var(--space-2);
+  // O rótulo troca para "Carregando..." durante o envio, que é mais
+  // curto: sem largura mínima o botão encolhe no meio do clique.
+  min-width: 14rem;
 
   &:disabled {
     opacity: 0.7;

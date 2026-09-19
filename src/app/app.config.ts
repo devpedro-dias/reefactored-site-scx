@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, HttpClient } from '@angular/common/http';
@@ -19,7 +19,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      // Sem isto o scroll é herdado entre rotas: sair do rodapé de uma
+      // página abria a próxima já no meio do conteúdo.
+      // 'enabled' (e não 'top') porque também restaura a posição no
+      // voltar/avançar do navegador, que é o comportamento esperado.
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled',
+      }),
+    ),
     provideHttpClient(),
     importProvidersFrom(
       TranslateModule.forRoot({

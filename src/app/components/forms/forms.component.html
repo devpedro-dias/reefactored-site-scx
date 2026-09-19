@@ -14,9 +14,16 @@
         [attr.aria-describedby]="showError('from_name') ? 'err-name' : null"
         [placeholder]="'contact.form.placeholder.company' | translate"
       />
-      @if (showError('from_name')) {
-        <p class="field__error" id="err-name">{{ errorKey('from_name') | translate }}</p>
-      }
+      <!-- Sempre presente: o espaço fica reservado e nada se desloca
+           quando a mensagem aparece. -->
+      <p class="field__error" id="err-name">
+        @if (showError('from_name')) {
+          <span class="field__error-msg">
+            <span class="field__error-dot" aria-hidden="true"></span>
+            {{ errorKey('from_name') | translate }}
+          </span>
+        }
+      </p>
     </div>
 
     <div class="field">
@@ -33,9 +40,14 @@
         [attr.aria-describedby]="showError('from_email') ? 'err-email' : null"
         [placeholder]="'contact.form.placeholder.email' | translate"
       />
-      @if (showError('from_email')) {
-        <p class="field__error" id="err-email">{{ errorKey('from_email') | translate }}</p>
-      }
+      <p class="field__error" id="err-email">
+        @if (showError('from_email')) {
+          <span class="field__error-msg">
+            <span class="field__error-dot" aria-hidden="true"></span>
+            {{ errorKey('from_email') | translate }}
+          </span>
+        }
+      </p>
     </div>
   </div>
 
@@ -53,9 +65,14 @@
       [attr.aria-describedby]="showError('subject') ? 'err-subject' : null"
       [placeholder]="'contact.form.placeholder.subject' | translate"
     />
-    @if (showError('subject')) {
-      <p class="field__error" id="err-subject">{{ errorKey('subject') | translate }}</p>
-    }
+    <p class="field__error" id="err-subject">
+      @if (showError('subject')) {
+        <span class="field__error-msg">
+          <span class="field__error-dot" aria-hidden="true"></span>
+          {{ errorKey('subject') | translate }}
+        </span>
+      }
+    </p>
   </div>
 
   <div class="field">
@@ -75,9 +92,14 @@
       [attr.aria-describedby]="showError('message') ? 'err-message' : null"
       [placeholder]="'contact.form.placeholder.message' | translate"
     ></textarea>
-    @if (showError('message')) {
-      <p class="field__error" id="err-message">{{ errorKey('message') | translate }}</p>
-    }
+    <p class="field__error" id="err-message">
+      @if (showError('message')) {
+        <span class="field__error-msg">
+          <span class="field__error-dot" aria-hidden="true"></span>
+          {{ errorKey('message') | translate }}
+        </span>
+      }
+    </p>
   </div>
 
   <button type="submit" class="btn-signal frm__submit" [disabled]="isSubmitting">
