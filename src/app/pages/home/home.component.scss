@@ -13,6 +13,11 @@
   overflow: hidden;
   background: var(--feature-bg);
 
+  // O <picture> não deve criar caixa: quem é dimensionado é o <img>.
+  picture {
+    display: contents;
+  }
+
   img {
     width: 100%;
     // Proporção em vez de altura fixa: assim o recorte é o mesmo em

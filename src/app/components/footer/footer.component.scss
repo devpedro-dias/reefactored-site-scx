@@ -173,12 +173,45 @@
   margin-top: var(--space-16);
   padding: var(--space-6) 0 var(--space-10);
   border-top: 1px solid var(--feature-hairline);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
 
   p {
     font-size: var(--t-xs);
     color: var(--on-feature-muted);
     opacity: 0.8;
     letter-spacing: 0.01em;
+  }
+}
+
+.ftr__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-weight: 600;
+    color: var(--brand-sub);
+    transition: color var(--ease-fast) var(--ease-out);
+
+    svg {
+      opacity: 0;
+      transition: opacity var(--ease-fast) var(--ease-out);
+    }
+
+    &:hover {
+      color: var(--signal);
+
+      svg {
+        opacity: 1;
+      }
+    }
   }
 }
 

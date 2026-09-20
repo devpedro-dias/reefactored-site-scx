@@ -113,7 +113,8 @@
     "contact": "Contact",
     "socialMedia": "Social Media",
     "additionalInfo": "Additional Information",
-    "copyright": "Copyright"
+    "copyright": "Copyright",
+    "developedBy": "Developed by"
   },
   "services": {
     "freteMaritimo": {
