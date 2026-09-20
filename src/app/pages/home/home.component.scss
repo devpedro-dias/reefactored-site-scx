@@ -15,11 +15,23 @@
 
   img {
     width: 100%;
-    height: clamp(280px, 56svh, 600px);
+    // Proporção em vez de altura fixa: assim o recorte é o mesmo em
+    // qualquer largura de tela. Com altura fixa, telas mais largas
+    // ampliavam a imagem e comiam cada vez mais das bordas.
+    // No estreito a caixa é mais alta e o corte vai para as laterais,
+    // preservando o navio inteiro de mastro a linha d'água.
+    aspect-ratio: 4 / 3;
+    max-height: 62svh;
+
+    @include respond-to(tablet) {
+      aspect-ratio: 16 / 9;
+      max-height: 76svh;
+    }
+
     object-fit: cover;
-    // Um pouco acima do centro: é onde a proa do navio fica em
-    // recortes largos e baixos.
-    object-position: center 42%;
+    // O mastro começa a ~8% do topo da foto. A 42% o recorte comia 15%
+    // e decepava o mastro e a ponte; a 12% sobra menos de 3%.
+    object-position: center 12%;
     // Mesmo tratamento das fotos nas páginas de serviço.
     filter: var(--duotone);
     // O filtro cria um contexto de empilhamento e promove a imagem para
@@ -118,14 +130,6 @@
   font-size: var(--t-md);
   color: var(--on-feature-muted);
   animation-delay: 280ms;
-}
-
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-  margin-top: var(--space-10);
-  animation-delay: 380ms;
 }
 
 .hero__globe {
