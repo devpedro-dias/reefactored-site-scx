@@ -47,6 +47,17 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
+
+  // Abaixo de desktop sobra só o hambúrguer. O alternador de tema e o
+  // seletor de idioma ocupavam 165px dos ~350px da tela, encostavam na
+  // marca e não deixavam espaço para o nome completo — e os dois já
+  // estão no rodapé do drawer, a um toque de distância.
+  @include below(desktop) {
+    app-theme-toggle,
+    app-language-switcher {
+      display: none;
+    }
+  }
 }
 
 // -------------------------------------------------------------------
@@ -84,10 +95,12 @@
   font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
 }
 
+// Só abaixo de 340px a sigla assume: aí nem o corpo fluido salva o
+// nome completo de transbordar.
 .brand__short {
   font-size: 1.3rem;
 
-  @include respond-to(tablet) {
+  @media (min-width: 340px) {
     display: none;
   }
 }
@@ -95,9 +108,10 @@
 .brand__full {
   display: none;
 
-  @include respond-to(tablet) {
+  // Corpo fluido para caber de 340px até o desktop sem quebrar linha.
+  @media (min-width: 340px) {
     display: inline;
-    font-size: clamp(0.8rem, 0.52rem + 0.44vw, 1.02rem);
+    font-size: clamp(0.62rem, 3.1vw, 1.02rem);
   }
 }
 

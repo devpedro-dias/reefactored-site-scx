@@ -22,12 +22,6 @@
     // preservando o navio inteiro de mastro a linha d'água.
     aspect-ratio: 4 / 3;
     max-height: 62svh;
-
-    @include respond-to(tablet) {
-      aspect-ratio: 16 / 9;
-      max-height: 76svh;
-    }
-
     object-fit: cover;
     // O mastro começa a ~8% do topo da foto. A 42% o recorte comia 15%
     // e decepava o mastro e a ponte; a 12% sobra menos de 3%.
@@ -39,6 +33,11 @@
     // explícita, a ordem do DOM faz a foto cobrir os véus abaixo.
     position: relative;
     z-index: 0;
+
+    @include respond-to(tablet) {
+      aspect-ratio: 16 / 9;
+      max-height: 76svh;
+    }
   }
 
   // Emenda com a seção seguinte, que tem o mesmo fundo.
