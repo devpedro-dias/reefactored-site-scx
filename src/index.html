@@ -19,6 +19,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Archivo:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
 
+  <!-- Imagem LCP da home: o banner de abertura. O preload a coloca na
+       fila antes de o Angular subir. -->
+  <link
+    rel="preload"
+    as="image"
+    href="assets/website-images/images-home/navio-frente-1920x1080.png"
+    imagesrcset="assets/website-images/images-home/navio-frente-1024x576.png 1024w, assets/website-images/images-home/navio-frente-1920x1080.png 1920w"
+    imagesizes="100vw"
+    fetchpriority="high"
+  >
+
   <link rel="icon" type="image/png" href="assets/website-images/logo-scx.png">
 
   <!-- Tema antes da primeira pintura. Sem isto o site carrega num tema e

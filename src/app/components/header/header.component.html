@@ -10,9 +10,11 @@
         height="44"
         alt=""
       />
-      <span class="brand__text">
-        <span class="brand__name">SCX</span>
-        <span class="brand__sub">{{ 'brand.tagline' | translate }}</span>
+      <!-- Nome completo numa linha só. Abaixo de tablet não há largura
+           para ele conviver com os controles, então sobra a sigla. -->
+      <span class="brand__text" aria-hidden="true">
+        <span class="brand__short">SCX</span>
+        <span class="brand__full">{{ 'brand.name' | translate }}</span>
       </span>
     </a>
 
@@ -58,12 +60,6 @@
             </ul>
           </div>
         </li>
-
-        <li>
-          <a routerLink="/contato" routerLinkActive="is-active" class="nav__link">{{
-            'navigation.contato' | translate
-          }}</a>
-        </li>
       </ul>
     </nav>
 
@@ -71,6 +67,7 @@
       <app-theme-toggle />
       <app-language-switcher />
 
+      <!-- Contato saiu da navegação: o CTA já é a porta de entrada dele. -->
       <a routerLink="/contato" class="btn-signal btn-signal--sm hdr__cta">{{
         'home.contactCTA.cta' | translate
       }}</a>
@@ -117,10 +114,6 @@
         {{ service.labelKey | translate }}
       </a>
     }
-
-    <a routerLink="/contato" routerLinkActive="is-active" class="drawer__link">
-      {{ 'navigation.contato' | translate }}
-    </a>
   </nav>
 
   <div class="drawer__foot">

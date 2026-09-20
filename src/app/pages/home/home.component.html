@@ -2,7 +2,29 @@
 
 <main id="conteudo">
   <!-- ============================================================
-       Hero — o globo é o logo da SCX em movimento
+       Banner de abertura — a fotografia sozinha, como no site antigo.
+       Recebe o mesmo duotone das páginas de serviço, para entrar na
+       paleta em vez de brigar com ela.
+       ============================================================ -->
+  <section class="shot">
+    <img
+      src="assets/website-images/images-home/navio-frente-1920x1080.png"
+      srcset="
+        assets/website-images/images-home/navio-frente-1024x576.png   1024w,
+        assets/website-images/images-home/navio-frente-1920x1080.png  1920w
+      "
+      sizes="100vw"
+      width="1920"
+      height="1080"
+      alt=""
+      fetchpriority="high"
+      decoding="async"
+    />
+  </section>
+
+  <!-- ============================================================
+       Proposta de valor e o globo — o logo da SCX em movimento.
+       Era o hero; passou a ser a seção logo abaixo do banner.
        ============================================================ -->
   <section class="hero u-feature">
     <div class="hero__glow" aria-hidden="true"></div>

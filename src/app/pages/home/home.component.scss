@@ -1,16 +1,56 @@
 @use "../../variables.scss" as *;
 
 // ===================================================================
-//  Hero
+//  Banner de abertura
+// ===================================================================
+
+.shot {
+  position: relative;
+  // A foto começa abaixo do cabeçalho, não por baixo dele: o cabeçalho
+  // é transparente e, sobre a fotografia, o texto dele dependia do que
+  // a imagem tivesse atrás. Esta faixa é o fundo da própria seção.
+  padding-top: var(--header-h);
+  overflow: hidden;
+  background: var(--feature-bg);
+
+  img {
+    width: 100%;
+    height: clamp(280px, 56svh, 600px);
+    object-fit: cover;
+    // Um pouco acima do centro: é onde a proa do navio fica em
+    // recortes largos e baixos.
+    object-position: center 42%;
+    // Mesmo tratamento das fotos nas páginas de serviço.
+    filter: var(--duotone);
+    // O filtro cria um contexto de empilhamento e promove a imagem para
+    // a etapa de pintura dos elementos posicionados. Sem esta camada
+    // explícita, a ordem do DOM faz a foto cobrir os véus abaixo.
+    position: relative;
+    z-index: 0;
+  }
+
+  // Emenda com a seção seguinte, que tem o mesmo fundo.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: var(--space-16);
+    background: linear-gradient(transparent, var(--feature-bg));
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+// ===================================================================
+//  Proposta de valor + globo (era o hero, agora vem abaixo do banner)
 // ===================================================================
 
 .hero {
   position: relative;
-  min-height: min(100svh, 920px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: calc(var(--header-h) + var(--space-10));
+  padding-top: var(--space-16);
   padding-bottom: var(--space-20);
   overflow: hidden;
   background:
@@ -127,7 +167,8 @@
 .ticker {
   position: relative;
   z-index: 2;
-  margin-top: auto;
+  // Era margin-top:auto, que dependia da altura cheia do hero antigo.
+  margin-top: var(--space-14);
   padding-top: var(--space-10);
   display: flex;
   align-items: center;

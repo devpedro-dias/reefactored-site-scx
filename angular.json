@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test:build:production"
+              "buildTarget": "scx-website:build:production"
             },
             "development": {
-              "buildTarget": "test:build:development"
+              "buildTarget": "scx-website:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test:build"
+            "buildTarget": "scx-website:build"
           }
         },
         "test": {
