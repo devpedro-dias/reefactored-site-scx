@@ -392,6 +392,30 @@ p {
   }
 }
 
+/* Letreiro da marca. Vive aqui, e não no cabeçalho, porque o rodapé
+   usa exatamente o mesmo tratamento — uma regra só impede que os dois
+   divirjam com o tempo.
+
+   O corpo cresce em duas etapas porque o limite é o cabeçalho, não o
+   rodapé: entre 1024px e 1280px a grade de três colunas deixa pouca
+   sobra para a marca, e um letreiro grande ali empurraria a navegação
+   para fora do centro. A partir de 1280px existe folga e ele cresce. */
+.u-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(0.78rem, 3.4vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--brand-sub);
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
+
+  @include respond-to(large) {
+    font-size: 1.3rem;
+  }
+}
+
 /* Superfície de destaque: hero, faixas de CTA e rodapé.
    Reescreve as variáveis de conteúdo para que tudo dentro dela
    herde o contraste certo, em qualquer tema. */

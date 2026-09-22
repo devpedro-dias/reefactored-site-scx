@@ -83,17 +83,8 @@
   transition: transform var(--ease-dur) var(--ease-out);
 }
 
-// Letreiro numa linha só, todo na cor principal da marca.
-.brand__text {
-  font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--brand-sub);
-  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
-}
+// A tipografia do letreiro vem de .u-wordmark, compartilhada com o
+// rodapé. Aqui fica só a troca entre sigla e nome completo.
 
 // Só abaixo de 340px a sigla assume: aí nem o corpo fluido salva o
 // nome completo de transbordar.
@@ -108,10 +99,8 @@
 .brand__full {
   display: none;
 
-  // Corpo fluido para caber de 340px até o desktop sem quebrar linha.
   @media (min-width: 340px) {
     display: inline;
-    font-size: clamp(0.62rem, 3.1vw, 1.02rem);
   }
 }
 

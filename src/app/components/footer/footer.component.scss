@@ -47,24 +47,7 @@
     object-fit: contain;
   }
 
-  span {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-  }
-
-  strong {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 600;
-    font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 36;
-  }
-
-  em {
-    @include eyebrow;
-    font-style: normal;
-    color: var(--brand-sub);
-  }
+  // O letreiro em si vem de .u-wordmark, a mesma do cabeçalho.
 }
 
 .ftr__contact {
