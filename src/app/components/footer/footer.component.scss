@@ -47,7 +47,11 @@
     object-fit: contain;
   }
 
-  // O letreiro em si vem de .u-wordmark, a mesma do cabeçalho.
+  // Mesmo tratamento do cabeçalho, corpo bem menor: no rodapé quem
+  // carrega a marca é a marca d'água, não este letreiro.
+  .u-wordmark {
+    --wordmark-size: 0.8rem;
+  }
 }
 
 .ftr__contact {

@@ -84,7 +84,18 @@
 }
 
 // A tipografia do letreiro vem de .u-wordmark, compartilhada com o
-// rodapé. Aqui fica só a troca entre sigla e nome completo.
+// rodapé; só o corpo é definido aqui.
+//
+// Ele cresce em duas etapas porque entre 1024px e 1280px a grade de
+// três colunas deixa pouca sobra para a marca, e um letreiro grande
+// ali empurraria a navegação para fora do centro.
+.brand__text {
+  --wordmark-size: clamp(0.78rem, 3.4vw, 1.05rem);
+
+  @include respond-to(large) {
+    --wordmark-size: 1.3rem;
+  }
+}
 
 // Só abaixo de 340px a sigla assume: aí nem o corpo fluido salva o
 // nome completo de transbordar.
