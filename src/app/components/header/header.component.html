@@ -18,51 +18,6 @@
       </span>
     </a>
 
-    <nav class="nav" [attr.aria-label]="'a11y.primaryNav' | translate">
-      <ul class="nav__list" role="list">
-        <li>
-          <a
-            routerLink="/"
-            [routerLinkActiveOptions]="{ exact: true }"
-            routerLinkActive="is-active"
-            class="nav__link"
-            >{{ 'navigation.home' | translate }}</a
-          >
-        </li>
-
-        <li class="nav__dropdown" (focusout)="onServicesBlur($event)">
-          <button
-            type="button"
-            class="nav__link nav__trigger"
-            [class.is-open]="servicesOpen()"
-            [attr.aria-expanded]="servicesOpen()"
-            aria-haspopup="true"
-            (click)="toggleServices()"
-          >
-            {{ 'common.services' | translate }}
-            <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
-              <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-            </svg>
-          </button>
-
-          <div class="nav__panel" [class.is-open]="servicesOpen()">
-            <ul role="list">
-              @for (service of services; track service.path) {
-                <li>
-                  <a
-                    [routerLink]="service.path"
-                    routerLinkActive="is-active"
-                    class="nav__panel-link"
-                    >{{ service.labelKey | translate }}</a
-                  >
-                </li>
-              }
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
-
     <div class="hdr__actions">
       <app-theme-toggle />
       <app-language-switcher />

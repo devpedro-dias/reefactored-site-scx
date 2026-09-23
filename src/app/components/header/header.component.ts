@@ -34,7 +34,7 @@ interface NavItem {
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnDestroy {
-  /** Os cinco serviços — vivem no dropdown do desktop e na lista do drawer. */
+  /** Os cinco serviços — hoje só a lista do drawer os consome. */
   readonly services: NavItem[] = [
     { path: '/frete-maritimo', labelKey: 'navigation.freteMaritimo' },
     { path: '/frete-aereo', labelKey: 'navigation.freteAereo' },
@@ -44,7 +44,6 @@ export class HeaderComponent implements OnDestroy {
   ];
 
   readonly drawerOpen = signal(false);
-  readonly servicesOpen = signal(false);
   readonly condensed = signal(false);
 
   private readonly platformId = inject(PLATFORM_ID);
@@ -57,10 +56,7 @@ export class HeaderComponent implements OnDestroy {
     // senão o menu cobre a página que acabou de carregar.
     this.routerSub = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.closeDrawer();
-        this.servicesOpen.set(false);
-      });
+      .subscribe(() => this.closeDrawer());
   }
 
   ngOnDestroy(): void {
@@ -77,7 +73,6 @@ export class HeaderComponent implements OnDestroy {
   @HostListener('document:keydown.escape')
   onEscape(): void {
     if (this.drawerOpen()) this.closeDrawer();
-    if (this.servicesOpen()) this.servicesOpen.set(false);
   }
 
   toggleDrawer(): void {
@@ -92,19 +87,6 @@ export class HeaderComponent implements OnDestroy {
   closeDrawer(): void {
     this.drawerOpen.set(false);
     this.unlockScroll();
-  }
-
-  toggleServices(): void {
-    this.servicesOpen.update((open) => !open);
-  }
-
-  /** Fecha o dropdown quando o foco sai dele por completo. */
-  onServicesBlur(event: FocusEvent): void {
-    const next = event.relatedTarget as Node | null;
-    const container = event.currentTarget as HTMLElement;
-    if (!next || !container.contains(next)) {
-      this.servicesOpen.set(false);
-    }
   }
 
   private lockScroll(): void {
